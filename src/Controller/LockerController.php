@@ -22,7 +22,7 @@ class LockerController extends AbstractController
         $locker = $this->lockerService->getLocker($id);
 
         if(empty($locker)){
-            return $this->redirectToRoute('app_default');        
+            return $this->redirectToRoute('app_home');        
         }
         
         $weapons = $this->lockerService->getWeaponInLocker($locker);

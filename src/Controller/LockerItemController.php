@@ -21,13 +21,13 @@ class LockerItemController extends AbstractController
         $locker = $this->lockerService->getLocker($id);
 
         if(empty($locker)){
-            return $this->redirectToRoute('app_default');        
+            return $this->redirectToRoute('app_home');        
         }
 
         $item = $this->itemService->getItemByIdInLocker($locker, $id);
 
         if(empty($item)){
-            return $this->redirectToRoute('app_default');        
+            return $this->redirectToRoute('app_home');        
         }
 
         $allItem = $this->itemService->getItemByTypeInLocker($locker, $item->getItemType());

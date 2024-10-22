@@ -20,7 +20,7 @@ class ItemController extends AbstractController
         $item = $this->itemService->getItem($id, $type);
 
         if(empty($item)){
-            return $this->redirectToRoute('app_default');        
+            return $this->redirectToRoute('app_home');        
         }
 
         return $this->render('item/index.html.twig', [
