@@ -60,5 +60,47 @@ class ValorantApi
 
     }
 
+    public function getSkins(bool $isHome): array
+    {
+        $url = 'weapons/skins';
+        $response = $this->client->request('GET', $this->baseUrl . $url, [
+            'headers' => [
+                'Accept' => 'application/json',
+            ]
+        ]);
+        $skins = $response->toArray();
+
+        if ($isHome) {
+            $homeSkins = [];
+            for ($i = 0; $i < 3; $i++) {
+                $homeSkins[] = $skins['data'][rand(0, count($skins['data']) - 1)];
+            }
+            return $homeSkins;
+        }
+
+        return $skins;
+    }
+
+    public function getBundles(bool $isHome): array
+    {
+        $url = 'bundles';
+        $response = $this->client->request('GET', $this->baseUrl . $url, [
+            'headers' => [
+                'Accept' => 'application/json',
+            ]
+        ]);
+        $bundles = $response->toArray();
+
+        if ($isHome) {
+            $homeBundles = [];
+            for ($i = 0; $i < 1; $i++) {
+                $homeBundles[] = $bundles['data'][rand(0, count($bundles['data']) - 1)];
+            }
+            return $homeBundles;
+        }
+
+        return $bundles;
+    }
+
 
 }
