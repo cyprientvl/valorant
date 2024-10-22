@@ -12,13 +12,16 @@ class Item
 {
     #[ORM\Id]
     #[ORM\Column(type: 'string', length: 255)]
-    private ?int $id = null;
+    private string $id;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $displayName;
 
     #[ORM\Column(type: 'string', length: 255)]
     private string $itemType;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $displayIcon;
 
     /**
      * @var Collection<int, Locker>
@@ -31,7 +34,15 @@ class Item
         $this->lockers = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getDisplayIcon(){
+        return $this->displayIcon;
+    }
+
+    public function setDisplayIcon($icon){
+        return $this->displayIcon = $icon;
+    } 
+
+    public function getId(): string
     {
         return $this->id;
     }
