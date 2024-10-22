@@ -16,6 +16,40 @@ class LockerRepository extends ServiceEntityRepository
         parent::__construct($registry, Locker::class);
     }
 
+
+    public function findLockerByUserId($userId)
+    {
+        return $this->createQueryBuilder('l')
+            ->join('l.user', 'u')
+            ->andWhere('u.id = :user_id') 
+            ->setParameter('user_id', $userId)
+            ->orderBy('l.id', 'ASC') 
+            ->getQuery()
+            ->getOneOrNullResult(); 
+    }
+
+    public function findLockerById($id){
+        return $this->createQueryBuilder('l')
+            ->join('l.user', 'u')
+            ->andWhere('l.id = :user_id') 
+            ->setParameter('user_id', $id)
+            ->orderBy('l.id', 'ASC') 
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function createLocker($locker){
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($locker);
+        $entityManager->flush();   
+    }
+
+    public function updateLocker($locker){
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($locker);
+        $entityManager->flush();
+    }
+
     //    /**
     //     * @return Locker[] Returns an array of Locker objects
     //     */
