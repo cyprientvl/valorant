@@ -33,7 +33,7 @@ class Locker
     #[ORM\OneToOne(mappedBy: 'locker', cascade: ['persist', 'remove'])]
     private ?User $user = null;
 
-    public function __construct(string $name, bool $isPublic, int $likes)
+    public function __construct(string $name, bool $isPublic, int $likes = 0)
     {
         $this->name = $name;
         $this->isPublic = $isPublic;
