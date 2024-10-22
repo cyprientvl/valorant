@@ -34,13 +34,15 @@ class Item
         $this->lockers = new ArrayCollection();
     }
 
-    public function getDisplayIcon(){
+    public function getDisplayIcon()
+    {
         return $this->displayIcon;
     }
 
-    public function setDisplayIcon($icon){
+    public function setDisplayIcon($icon)
+    {
         return $this->displayIcon = $icon;
-    } 
+    }
 
     public function getId(): string
     {
