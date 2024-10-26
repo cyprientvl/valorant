@@ -11,37 +11,29 @@ use Doctrine\ORM\Mapping as ORM;
 class Item
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 191)]
     private string $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 191)]
     private string $displayName;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 191)]
     private string $itemType;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $displayIcon;
+    
 
     /**
      * @var Collection<int, Locker>
      */
-    #[ORM\ManyToMany(targetEntity: Locker::class, mappedBy: 'items')]
-    private Collection $lockers;
+    #[ORM\OneToMany(targetEntity: LockerItem::class, mappedBy: 'item')]
+    private Collection $lockerItems;
+
+    #[ORM\OneToMany(targetEntity: Chroma::class, mappedBy: 'item')]
+    private Collection $chromas;
 
     public function __construct()
     {
-        $this->lockers = new ArrayCollection();
-    }
-
-    public function getDisplayIcon()
-    {
-        return $this->displayIcon;
-    }
-
-    public function setDisplayIcon($icon)
-    {
-        return $this->displayIcon = $icon;
+        $this->lockerItems = new ArrayCollection();
+        $this->chromas = new ArrayCollection();
     }
 
     public function getId(): string
@@ -72,27 +64,20 @@ class Item
     /**
      * @return Collection<int, Locker>
      */
-    public function getLockers(): Collection
+    public function getLockerItems(): Collection
     {
-        return $this->lockers;
+        return $this->lockerItems;
     }
 
-    public function addLocker(Locker $locker): static
-    {
-        if (!$this->lockers->contains($locker)) {
-            $this->lockers->add($locker);
-            $locker->addItem($this);
-        }
-
-        return $this;
+    public function getChromas(): Collection{
+        return $this->chromas;
     }
 
-    public function removeLocker(Locker $locker): static
+    public function addChroma(Chroma $chroma): static
     {
-        if ($this->lockers->removeElement($locker)) {
-            $locker->removeItem($this);
+        if (!$this->chromas->contains($chroma)) {
+            $this->chromas->add($chroma);
         }
-
         return $this;
     }
 }

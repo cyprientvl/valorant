@@ -38,7 +38,7 @@ class LockerService{
 
     public function getMyLocker(){
         $user = $this->security->getUser();
-        $locker = $this->lockerRepository->findLockerById($id);
+        $locker = $this->lockerRepository->getMyLocker();
         return $locker;
     }
 

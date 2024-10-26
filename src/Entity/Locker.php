@@ -15,7 +15,7 @@ class Locker
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 191)]
     private string $name;
 
     #[ORM\Column(type: 'boolean')]
@@ -27,8 +27,8 @@ class Locker
     /**
      * @var Collection<int, Item>
      */
-    #[ORM\ManyToMany(targetEntity: Item::class, inversedBy: 'lockers')]
-    private Collection $items;
+    #[ORM\OneToMany(mappedBy: 'locker', targetEntity: LockerItem::class)]
+    private Collection $lockerItems;
 
     #[ORM\OneToOne(mappedBy: 'locker', cascade: ['persist', 'remove'])]
     private ?User $user = null;
@@ -38,7 +38,7 @@ class Locker
         $this->name = $name;
         $this->isPublic = $isPublic;
         $this->likes = $likes;
-        $this->items = new ArrayCollection();
+        $this->lockerItems = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -84,23 +84,23 @@ class Locker
     /**
      * @return Collection<int, Item>
      */
-    public function getItems(): Collection
+    public function getLockerItems(): Collection
     {
-        return $this->items;
+        return $this->lockerItems;
     }
 
-    public function addItem(Item $item): static
+    public function addLockerItem(LockerItem $item): static
     {
-        if (!$this->items->contains($item)) {
-            $this->items->add($item);
+        if (!$this->lockerItems->contains($item)) {
+            $this->lockerItems->add($item);
         }
 
         return $this;
     }
 
-    public function removeItem(Item $item): static
+    public function removeLockerItem(LockerItem $item): static
     {
-        $this->items->removeElement($item);
+        $this->lockerItems->removeElement($item);
 
         return $this;
     }
