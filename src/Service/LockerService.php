@@ -50,15 +50,25 @@ class LockerService{
     public function getWeaponInLocker($locker){      
 
         $weapon = [];
-        foreach ($locker->getItems() as $item) {
-            array_push($weapon[$item->getItemType()], $item);
-        }
+        foreach ($locker->getLockerItems() as $item) {
+            $itemType = $item->getItem()->getItemType();
+            if (!isset($weapon[$itemType])) {
+                $weapon[$itemType] = [];
+            }
+
+            if ($item->getIsMainItemType()) {
+                array_unshift($weapon[$itemType], $item);
+            } else {
+                array_push($weapon[$itemType], $item);
+            }        }
 
         return $weapon;
     }
 
     public function createLocker($name){
         $locker = new Locker($name, false);
+        $user = $this->security->getUser();
+        $locker->setUser($user);
         $this->lockerRepository->createLocker($locker);
     }
 

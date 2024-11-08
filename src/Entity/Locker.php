@@ -30,8 +30,8 @@ class Locker
     #[ORM\OneToMany(mappedBy: 'locker', targetEntity: LockerItem::class)]
     private Collection $lockerItems;
 
-    #[ORM\OneToOne(mappedBy: 'locker', cascade: ['persist', 'remove'])]
-    private ?User $user = null;
+    #[ORM\OneToOne(targetEntity: User::class)]
+    private User $user;
 
     public function __construct(string $name, bool $isPublic, int $likes = 0)
     {

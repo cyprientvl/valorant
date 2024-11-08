@@ -18,7 +18,7 @@ class Chroma
     #[ORM\Column(type: 'string', length: 191)]
     private string $displayIcon;
 
-    #[ORM\ManyToOne(targetEntity: Chroma::class)]
+    #[ORM\ManyToOne(targetEntity: Item::class)]
     #[ORM\JoinColumn(nullable: false)] 
     private ?Item $item;
 

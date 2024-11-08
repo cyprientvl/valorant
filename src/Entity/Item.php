@@ -20,7 +20,8 @@ class Item
     #[ORM\Column(type: 'string', length: 191)]
     private string $itemType;
     
-
+    #[ORM\Column(type: 'string', length: 191)]
+    private string $displayIcon;
     /**
      * @var Collection<int, Locker>
      */
@@ -34,6 +35,10 @@ class Item
     {
         $this->lockerItems = new ArrayCollection();
         $this->chromas = new ArrayCollection();
+    }
+
+    public function getDisplayIcon(): string{
+        return $this->displayIcon;
     }
 
     public function getId(): string
