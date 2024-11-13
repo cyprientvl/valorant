@@ -5,13 +5,14 @@ namespace App\Repository;
 use App\Entity\Locker;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bundle\SecurityBundle\Security;
 
 /**
  * @extends ServiceEntityRepository<Locker>
  */
 class LockerRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, private Security $security)
     {
         parent::__construct($registry, Locker::class);
     }
@@ -31,8 +32,19 @@ class LockerRepository extends ServiceEntityRepository
     public function findLockerById($id){
         return $this->createQueryBuilder('l')
             ->join('l.user', 'u')
-            ->andWhere('l.id = :user_id') 
-            ->setParameter('user_id', $id)
+            ->andWhere('l.id = :id') 
+            ->setParameter('id', $id)
+            ->orderBy('l.id', 'ASC') 
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function getMyLocker(){
+        $user = $this->security->getUser();
+        return $this->createQueryBuilder('l')
+            ->join('l.user', 'u')
+            ->andWhere('u.id = :user_id') 
+            ->setParameter('user_id', $user->getId())
             ->orderBy('l.id', 'ASC') 
             ->getQuery()
             ->getOneOrNullResult();

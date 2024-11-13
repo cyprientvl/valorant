@@ -2,10 +2,6 @@
 
 namespace App\Service;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Repository\LockerRepository;
@@ -59,14 +55,14 @@ class ItemService{
         }
 
         public function getUrlByItemType($type){
-            if(isWeapon($type)) return "https://valorant-api.com/v1/weapons/skins/";
-            if(isPlayerCard($type)) return "https://valorant-api.com/v1/playercards/";
-            if(isSpray($type)) return "https://valorant-api.com/v1/sprays/";
-            if(isPlayerTitle($type)) return "https://valorant-api.com/v1/playertitles/";
+            if($this->isWeapon($type)) return "https://valorant-api.com/v1/weapons/skins/";
+            if($this->isPlayerCard($type)) return "https://valorant-api.com/v1/playercards/";
+            if($this->isSpray($type)) return "https://valorant-api.com/v1/sprays/";
+            if($this->isPlayerTitle($type)) return "https://valorant-api.com/v1/playertitles/";
         }
 
         public function isWeapon($type){
-            $itens = ["Odin",
+            $items = ["Odin",
             "Ares",
             "Vandal",
             "Bulldow",
@@ -86,7 +82,7 @@ class ItemService{
             "Stinger",
             "Melee"];
 
-            return in_array($type, $liste);
+            return in_array($type, $items);
         }
 
         public function isPlayerCard($type){

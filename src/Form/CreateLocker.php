@@ -13,7 +13,7 @@ class CreateLocker extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => false,
-                'attr' => ['class' => 'input-search', 'placeholder' => 'Creer']
+                'attr' => ['class' => 'input-search', 'placeholder' => 'Locker name']
             ]);
             
     }

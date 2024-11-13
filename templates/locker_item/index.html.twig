@@ -3,18 +3,61 @@
 {% block title %}Hello LockerItemController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<main class="main-weapon-detail">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <img class="main-weapon-detail-bg" src="https://trackercdn.com/cdn/tracker.gg/premium/pattern-poly.png?v=2">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/iutbgdin/Documents/symphony/valorant/src/Controller/LockerItemController.php</code></li>
-        <li>Your template at <code>/home/iutbgdin/Documents/symphony/valorant/templates/locker_item/index.html.twig</code></li>
-    </ul>
-</div>
+        <div class="title">
+            <p>SPECTRE</p>
+        </div>
+
+        <div class="choice">
+            <p>SKINS</p>
+            <p>OTHER</p>
+        </div>
+
+        <div class="img-skin">
+            <img  src="https://media.valorant-api.com/weaponskinchromas/48b6e421-4f93-5a00-62b3-20a1d320b040/displayicon.png">
+        </div>
+
+        <div class="skin-bottom">
+            <div class="chromas">
+                <a class="chroma">
+                    <img  src="https://media.valorant-api.com/weapons/462080d1-4035-2937-7c09-27aa2a5c27a7/displayicon.png">
+                </a>
+                <a class="chroma">
+                    <img  src="https://media.valorant-api.com/weaponskinchromas/e6586300-4434-2dee-8867-45b47980f7a5/fullrender.png">
+
+                </a>
+            </div>
+
+            <p class="skin-title">PRIME SPECTRE</p>
+            <div class="locker-form">
+                <div>
+                    <a href="#">
+                      <p>
+                        <span class="bg"></span>
+                        <span class="base"></span>
+                        <span class="text">ADD SKIN</span>
+                      </p>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="list-items">
+            <a class="item">
+                <img  src="https://media.valorant-api.com/weapons/462080d1-4035-2937-7c09-27aa2a5c27a7/displayicon.png">
+            </a>
+            <a class="item">
+                <img  src="https://media.valorant-api.com/weapons/462080d1-4035-2937-7c09-27aa2a5c27a7/displayicon.png">
+            </a>
+            <a class="item">
+                <img  src="https://media.valorant-api.com/weapons/462080d1-4035-2937-7c09-27aa2a5c27a7/displayicon.png">
+                <img class="lock" src="lock.png">
+            </a>
+        </div>
+
+    </main>
 {% endblock %}
