@@ -49,9 +49,10 @@ class ValorantApi
             $query = '';
         }
 
+        $query = strtolower($query);
         $items = [];
         for ($i = 0; $i < count($data['data']); $i++) {
-            if (strpos($data['data'][$i][$param], $query) !== false) {
+            if (strpos(strtolower($data['data'][$i][$param]), $query) !== false) {
                 $items[] = $data['data'][$i];
             }
         }
