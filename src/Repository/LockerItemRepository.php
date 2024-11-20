@@ -16,6 +16,12 @@ class LockerItemRepository extends ServiceEntityRepository
         parent::__construct($registry, LockerItem::class);
     }
 
+    public function add($lockerItem){
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($lockerItem);
+        $entityManager->flush();   
+    }
+
 //    /**
 //     * @return LockerItem[] Returns an array of LockerItem objects
 //     */

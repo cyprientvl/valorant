@@ -11,16 +11,24 @@
         <div class="locker">
 
             <div class="locker-form">
-                <form>
-                    <label>Locker name:</label>
-                    <input type="text" value="my locker" class="locker-name">
-                </form>
+                {{ form_start(updateForm) }}
+                    <div style="width: 300px">
+                        <label>Locker name:</label>
+                        {{ form_row(updateForm.name) }}
+                    </div>
+                     
+                    <button type="submit">
+                        Valider
+                    </button>
+                {{ form_end(updateForm) }}
+
+                
                 <div>
-                    <a href="#">
+                    <a href="/locker/{{locker.id}}/update-public">
                       <p>
                         <span class="bg"></span>
                         <span class="base"></span>
-                        <span class="text">Set To Public</span>
+                        <span class="text">{{ locker.isPublic == 1 ?  'Set to Private ' : 'Set To Public'}}</span>
                       </p>
                     </a>
                   </div>
@@ -59,7 +67,7 @@
                     <p class="title-ligne">sidearms</p>
     
                     {% if weapons['Classic'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Classic'][0].getId()}}">
                         <img  src="{{weapons['Classic'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Classic']  %}
@@ -79,7 +87,7 @@
                         </a>
                     {% endif %}
                     {% if weapons['Shorty'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Shorty'][0].getId()}}">
                         <img  src="{{weapons['Shorty'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Shorty']  %}
@@ -98,7 +106,7 @@
                         </a>
                     {% endif %}
                     {% if weapons['Frenzy'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Frenzy'][0].getId()}}">
                         <img  src="{{weapons['Frenzy'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Frenzy']  %}
@@ -118,7 +126,7 @@
                         </a>
                     {% endif %}
                     {% if weapons['Ghost'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Ghost'][0].getId()}}">
                         <img  src="{{weapons['Ghost'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Ghost']  %}
@@ -139,7 +147,7 @@
                         </a>
                     {% endif %}
                     {% if weapons['Sheriff'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Sheriff'][0].getId()}}">
                         <img  src="{{weapons['Sheriff'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Sheriff']  %}
@@ -163,7 +171,7 @@
                     <p class="title-ligne">SMGS</p>
     
                     {% if weapons['Stinger'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Stinger'][0].getId()}}">
                         <img  src="{{weapons['Stinger'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Stinger']  %}
@@ -182,8 +190,8 @@
                         </a>
                     {% endif %}
 
-                    {% if weapons['Spectre'] is defined %}
-                        <a class="container">
+                    {% if weapons['Stinger'] is defined %}
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Stinger'][0].getId()}}">
                         <img  src="{{weapons['Spectre'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Spectre']  %}
@@ -207,7 +215,7 @@
                     <p class="title-ligne">Shotguns</p>
     
                     {% if weapons['Bucky'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Bucky'][0].getId()}}">
                         <img  src="{{weapons['Bucky'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Bucky']  %}
@@ -227,7 +235,7 @@
                         </a>
                     {% endif %}
                     {% if weapons['Judge'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Judge'][0].getId()}}">
                         <img  src="{{weapons['Judge'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Judge']  %}
@@ -250,7 +258,7 @@
                     <p class="title-ligne">Rifles</p>
     
                     {% if weapons['Bulldog'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Bulldog'][0].getId()}}">
                         <img  src="{{weapons['Bulldog'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Bulldog']  %}
@@ -269,7 +277,7 @@
                         </a>
                     {% endif %}
                     {% if weapons['Guardian'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Guardian'][0].getId()}}">
                         <img  src="{{weapons['Guardian'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Guardian']  %}
@@ -289,7 +297,7 @@
                         </a>
                     {% endif %}
                     {% if weapons['Phantom'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Phantom'][0].getId()}}">
                             <img  src="{{weapons['Phantom'][0].getChroma().getDisplayIcon()}}">
                             <div class="list-items">
                                 {% for item in weapons['Phantom']  %}
@@ -308,7 +316,7 @@
                         </a>
                     {% endif %}
                     {% if weapons['Vandal'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Vandal'][0].getId()}}">
                             <img  src="{{weapons['Vandal'][0].getChroma().getDisplayIcon()}}">
                             <div class="list-items">
                                 {% for item in weapons['Vandal']  %}
@@ -331,7 +339,7 @@
                     <p class="title-ligne">Sniper rifles</p>
     
                     {% if weapons['Marshal'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Marshal'][0].getId()}}">
                             <img  src="{{weapons['Marshal'][0].getChroma().getDisplayIcon()}}">
                             <div class="list-items">
                                 {% for item in weapons['Marshal']  %}
@@ -351,7 +359,7 @@
                     {% endif %}
 
                     {% if weapons['Operator'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Operator'][0].getId()}}">
                         <img  src="{{weapons['Operator'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Operator']  %}
@@ -373,7 +381,7 @@
                     <p class="title-ligne">Machine Guns</p>
     
                     {% if weapons['Ares'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Ares'][0].getId()}}">
                         <img  src="{{weapons['Ares'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Ares']  %}
@@ -393,7 +401,7 @@
                     {% endif %}
 
                     {% if weapons['Odin'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Odin'][0].getId()}}">
                         <img  src="{{weapons['Odin'][0].getChroma().getDisplayIcon()}}">
                         <div class="list-items">
                             {% for item in weapons['Odin']  %}
@@ -417,7 +425,7 @@
                     <p class="title-ligne">MELEE</p>
     
                     {% if weapons['Melee'] is defined %}
-                        <a class="container">
+                        <a class="container" href="/locker/{{locker.id}}/{{weapons['Melee'][0].getId()}}">
                             <img src="{{weapons['Melee'][0].getChroma().getDisplayIcon()}}">
                             <div class="list-items">
                                 {% for item in weapons['Melee']  %}

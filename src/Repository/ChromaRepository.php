@@ -16,6 +16,13 @@ class ChromaRepository extends ServiceEntityRepository
         parent::__construct($registry, Chroma::class);
     }
 
+
+    public function add($chroma){
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($chroma);
+        $entityManager->flush();   
+    }
+
 //    /**
 //     * @return Chroma[] Returns an array of Chroma objects
 //     */
