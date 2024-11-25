@@ -2,8 +2,6 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,8 +24,9 @@ class SearchFormType extends AbstractType
                     'Titles' => 'titles',
                     'Sprays' => 'sprays',
                 ],
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
+                'attr' => ['class' => 'search-select'],
             ]);
     }
 

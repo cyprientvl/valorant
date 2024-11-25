@@ -23,8 +23,8 @@
                     {{ form_row(form.q) }}
                 </div>
         </div>
-        <div>
-            {{ form_widget(form) }}
+        <div class="search-type-options">
+            {{ form_widget(form.type) }}
         </div>
         <div class="form-search-item">
             <button type="submit">
@@ -40,17 +40,16 @@
     <div class="result-search-item">
         {% if items is not empty %}
             <h2>RESULTS</h2>
-            <div class="results-items">
-                    {% for item in items %}
-                        {# <div class="{% if type == 'skins' %}
-                item-skin
+            <div class="{% if type == 'skins' %}
+                results-items-skins
             {% elseif type == 'titles' %}
-                item-title
+                results-items-titles
             {% elseif type == 'cards' %}
-                item-card
+                results-items-cards
             {% elseif type == 'sprays' %}
-                item-spray
-            {% endif %}"> #}
+                results-items-sprays
+            {% endif %}">
+                    {% for item in items %}
                         {% if type == 'skins' %}
                             <div class="item-skin">
                                 <img src="{{ item.displayIcon }}" alt="{{ item.displayName }}">

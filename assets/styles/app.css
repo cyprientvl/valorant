@@ -689,11 +689,36 @@ footer .social a svg{
   font-size: 40px;
 }
 
-.results-items{
+.results-items-titles{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+  margin: 20px auto;
+  gap: 40px;
+}
+
+.results-items-skins{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.results-items-cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+  margin: 20px auto;
+  gap: 40px;
+}
+
+.results-items-sprays{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 
 .item-skin {
   margin: 10px;
@@ -702,6 +727,14 @@ footer .social a svg{
   padding: 20px;
   overflow: hidden;
   position: relative;
+  width: 350px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+
 }
 
 .item-skin::before {
@@ -719,6 +752,11 @@ footer .social a svg{
   z-index: 0;
 }
 
+.item-skin:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
 .item-skin img {
   width: 350px;
   height: 150px;
@@ -732,19 +770,28 @@ footer .social a svg{
   text-wrap: wrap;
   max-width: 150px;
   z-index: 2;
-  position: relative;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 }
 
-.item-card{
-  margin: 20px;
+.item-card {
+  position: relative;
   cursor: pointer;
+  flex: 0 0 calc(33.333% - 20px);
+  max-width: 270px;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover {
+  transform: scale(1.05);
+  z-index: 1;
 }
 
 .item-card img {
-  width: 270px;
-  height: 640px;
+  width: 100%;
+  height: auto;
   object-fit: contain;
-  z-index: 1;
 }
 
 .item-spray {
@@ -754,6 +801,10 @@ footer .social a svg{
   padding: 20px;
   background-color: #343b42;
   position: relative;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .item-spray::before {
@@ -770,6 +821,10 @@ footer .social a svg{
   opacity: 0.05;
   z-index: 0;
 }
+.item-spray:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
 
 .item-spray img {
   width: 300px;
@@ -780,34 +835,39 @@ footer .social a svg{
 
 .item-title {
   position: relative;
-  margin: 20px;
   cursor: pointer;
+  flex: 0 0 calc(33.333% - 20px);
+  max-width: 270px;
+  transition: transform 0.3s ease;
 }
 
-.item-title img {
-  width: 270px;
-  height: 640px;
-  object-fit: contain;
+.item-title:hover {
+  transform: scale(1.05);
   z-index: 1;
 }
 
-/* Le rectangle jaune qui s'affiche au milieu de l'image */
+.item-title img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .title-overlay {
   position: absolute;
-  bottom: 50px; /* Ajuste la position verticale du rectangle */
+  bottom: 25%;
   left: 0;
-  width: 100%; /* Prend toute la largeur de l'image */
-  background-color: gold; /* Couleur du rectangle */
+  width: 100%;
+  background-color: #E9EEB4;
   text-align: center;
-  padding: 10px 0; /* Un peu de padding autour du texte */
-  z-index: 2; /* Au-dessus de l'image */
+  padding: 10px 0;
+  z-index: 2;
 }
 
 .title-overlay p {
-  margin: 0; /* Enlève les marges par défaut de <p> */
-  font-size: 16px; /* Ajuste la taille de la police */
-  font-weight: bold; /* Tu peux changer ou ajuster cela selon tes préférences */
-  color: white; /* Couleur du texte */
+  margin: 0;
+  font-size: 16px;
+  font-weight: normal;
+  color: black;
 }
 
 
@@ -847,4 +907,102 @@ footer .social a svg{
       transform: translateY(0);
       opacity: 1;
   }
+}
+
+.search-item-dispose {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 510px;
+}
+
+.search-type-options {
+  display: flex;
+  gap: 20px;
+  background-color: #2c3f52;
+  padding: 15px;
+  border-radius: 5px;
+  width: 100%;
+  justify-content: center;
+}
+
+.search-type-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+}
+
+.search-type-options input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  margin: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.search-type-options input[type="radio"]:checked {
+  border-color: #FF4655;
+  background-color: transparent;
+}
+
+.search-type-options input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: #FF4655;
+  border-radius: 50%;
+}
+
+.search-type-options label:hover {
+  color: #FF4655;
+}
+
+.search-select {
+    width: 100%;
+    padding: 10px;
+    background-color: #2c3f52;
+    border: none;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+}
+
+.search-select:hover {
+    background-color: #3a4d62;
+}
+
+.search-select:focus {
+    box-shadow: 0 0 0 2px #FF4655;
+}
+
+.search-select option {
+    background-color: #2c3f52;
+    color: white;
+    padding: 15px;
+}
+
+.search-select option:hover {
+    background-color: #FF4655;
 }
