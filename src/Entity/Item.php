@@ -41,9 +41,18 @@ class Item
         return $this->displayIcon;
     }
 
+    public function setDisplayIcon($newDisplayIcon){
+        $this->displayIcon = $newDisplayIcon;
+    }
+
     public function getId(): string
     {
         return $this->id;
+    }
+
+
+    public function setId($id){
+        $this->id = $id;
     }
 
     public function getDisplayName(): string

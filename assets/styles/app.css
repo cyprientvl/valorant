@@ -414,6 +414,7 @@ footer .social a svg{
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    text-transform: uppercase;
   }
 
   .main-weapon-detail .title p{

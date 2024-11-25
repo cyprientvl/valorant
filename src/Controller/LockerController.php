@@ -42,6 +42,20 @@ class LockerController extends AbstractController
         ]);
     }
 
+    #[Route('/locker/{id}/update-public', name: 'app_locker_public')]
+    public function updatePublic($id): Response {
+
+        $locker = $this->lockerService->getMyLocker();
+
+        if(intval($id) != $locker->getId()){
+            return $this->redirectToRoute('app_home');       
+        }
+        $this->lockerService->updateLocker($locker, $locker->getName(), !$locker->isPublic());
+
+        return $this->redirectToRoute('app_locker', ['id' => $id]);        
+    }
+
+
     #[Route('/locker/{id}', name: 'app_locker')]
     public function index(Request $request, $id): Response
     {
@@ -53,21 +67,21 @@ class LockerController extends AbstractController
         }
         
         $weapons = $this->lockerService->getWeaponInLocker($locker);
-        $form = $this->createForm(UpdateLocker::class);
+        $form = $this->createForm(UpdateLocker::class, ['name' => $locker->getName()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $this->lockerService->updateLocker($locker, $data['name'], $data['isPublic']);
-            return $this->redirectToRoute('app_locker');        
+            $this->lockerService->updateLocker($locker, $data['name']);
+            return $this->redirectToRoute('app_locker', ['id' => $id]);        
         }
 
-       
         return $this->render('locker/locker.html.twig', [
             'controller_name' => 'LockerController',
             'locker' => $locker,
             'weapons' => $weapons,
-            'isMyLocker' => $this->lockerService->isMyLocker($locker)
+            'isMyLocker' => $this->lockerService->isMyLocker($locker),
+            'updateForm' => $form
         ]);
     }
 
