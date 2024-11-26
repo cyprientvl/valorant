@@ -26,16 +26,12 @@ class SearchController extends AbstractController
         $type = $request->query->get('type', '');
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
-            $query = $data['q'];
-            $type = $data['type'];
-
+            $query = $form->get('q')->getData();
+            $type = $form->get('type')->getData();
             if (!$type) {
                 $this->addFlash('error', 'Veuillez sélectionner un type de recherche.');
                 return $this->redirectToRoute('app_search');
             }
-
-            $items = $this->searchItems($type, $query);
 
             return $this->redirectToRoute('app_search', [
                 'q' => $query,
@@ -43,9 +39,14 @@ class SearchController extends AbstractController
             ]);
         }
 
+
         if ($query && $type) {
             $items = $this->searchItems($type, $query);
+            if (empty($items)) {
+                $this->addFlash('error', 'Aucun résultat trouvé.');
+            }
         }
+
 
         return $this->render('search/index.html.twig', [
             'form' => $form->createView(),
