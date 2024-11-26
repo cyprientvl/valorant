@@ -84,4 +84,8 @@ class LockerService{
         $this->lockerRepository->updateLocker($locker);
 
     }
+
+    public function getTopLocker(){
+        return $this->lockerRepository->getTopLocker();
+    }
 }

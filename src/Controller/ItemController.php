@@ -51,15 +51,16 @@ class ItemController extends AbstractController
     }
 
 
-    #[Route('/item/{id}/{chromaId}/{type}', name: 'app_item')]
-    public function index($id, $chromaId, $type): Response
+    #[Route('/item/{id}/{chromaId}', name: 'app_item')]
+    public function index($id, $chromaId): Response
     {
 
-        $item = $this->itemService->getItem($id, $type);
+        $item = $this->itemService->getItem($id, 'Melee');
 
         if(empty($item)){
             return $this->redirectToRoute('app_home');        
         }
+        $type = $this->itemService->getWeaponType($item['data']['displayName']);
         $chroma = null;
         foreach ($item['data']['chromas'] as $ch) {
             if($ch['uuid'] == $chromaId) $chroma = $ch;
@@ -70,11 +71,15 @@ class ItemController extends AbstractController
         }
 
         $chromaIsInMyLocker = false;
+        $itemIdInMyLocker = 0;
         $locker = $this->lockerService->getMyLocker();
         
         if(!empty($locker)){
             foreach($locker->getLockerItems() as $lockerItem){
-                if($lockerItem->getChroma()->getId() == $chromaId) $chromaIsInMyLocker = true;
+                if($lockerItem->getChroma()->getId() == $chromaId){
+                    $chromaIsInMyLocker = true;
+                    $itemIdInMyLocker = $lockerItem->getId();
+                }
             }
         }
 
@@ -91,6 +96,7 @@ class ItemController extends AbstractController
             'type' => $type,
             'chroma' => $chroma,
             'chromaIsInMyLocker' => $chromaIsInMyLocker,
+            'itemIdInMyLocker' => $itemIdInMyLocker,
             'lockerId' => strval($locker->getId()),
             'recomendation' => $recomendation
         ]);

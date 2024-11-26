@@ -50,6 +50,15 @@ class LockerRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function getTopLocker(){
+        return $this->createQueryBuilder('l')
+            ->join('l.user', 'u')
+            ->andWhere('l.isPublic = 1')
+            ->orderBy('l.likes', 'DESC') 
+            ->getQuery()
+            ->getResult();
+    }
+
     public function createLocker($locker){
         $entityManager = $this->getEntityManager();
         $entityManager->persist($locker);

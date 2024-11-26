@@ -16,6 +16,18 @@ class LockerController extends AbstractController
     public function __construct(private LockerService $lockerService){
     }
 
+    #[Route('/top-locker', name: 'app_locker_top')]
+    public function topLocker(){
+
+        $lockers = $this->lockerService->getTopLocker();
+
+        dd($lockers);
+
+        return $this->render('locker/top-locker.html.twig', [
+            'controller_name' => 'LockerController',
+            'lockers' =>$lockers 
+        ]);
+    }
 
     #[Route('/locker/create', name: 'app_locker_create')]
     public function create(Request $request): Response

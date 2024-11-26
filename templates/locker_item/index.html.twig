@@ -38,7 +38,7 @@
             <div class="chromas">
             
                 {% for ch in item.getItem().getChromas()  %}
-                    <a class="chroma" href="/item/{{item.getItem().getId()}}/{{ch.getId()}}/{{item.getItem().getItemType()}}">
+                    <a class="chroma" href="/item/{{item.getItem().getId()}}/{{ch.getId()}}">
                         <img src="{{ch.getDisplayIcon()}}" >
                     </a>
                 {% endfor %}
