@@ -32,7 +32,7 @@ class ChromaService
             $c->setId($ch['uuid']);
             $c->setItem($item);
 
-            $this->chromaService->add($c);
+            $this->chromaService->add($c, $item);
         }
     }
 

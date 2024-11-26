@@ -13,6 +13,10 @@ label{
     color: white;
 }
 
+a{
+  color: white;
+}
+
 nav{
     background-color: #0F1923;
     padding: 15px;
@@ -293,6 +297,11 @@ footer .social a svg{
   
   .locker-form div a.transparent > p span.base {
     border: 1px solid #ece8e1; /* Remplace $white */
+  }
+
+  .locker-form{
+    background-color: transparent;
+    border: none;
   }
   
   .locker-form div a:after,

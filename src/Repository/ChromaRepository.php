@@ -17,10 +17,11 @@ class ChromaRepository extends ServiceEntityRepository
     }
 
 
-    public function add($chroma){
+    public function add($chroma, $itemInDb){
         $entityManager = $this->getEntityManager();
         $entityManager->persist($chroma);
         $entityManager->flush();   
+        $entityManager->refresh($itemInDb);
     }
 
 //    /**
