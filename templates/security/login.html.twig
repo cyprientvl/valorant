@@ -1,41 +1,59 @@
-{% extends 'base.html.twig' %}
+{% extends 'baselogin.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
-    <form method="post">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+<div class="login-container">
+    <div class="login-box">
 
-        {% if app.user %}
-            <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        <h1>Connexion</h1>
+
+        <form method="post" class="login-form">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <div class="form-group">
+                <input type="text" value="{{ last_username }}" name="_username" id="username" 
+                       class="form-control" placeholder="NOM D'UTILISATEUR" required autofocus>
             </div>
-        {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="username">Username</label>
-        <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
-        <label for="password">Password</label>
-        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-
-            <div class="checkbox mb-3">
-                <input type="checkbox" name="_remember_me" id="_remember_me">
-                <label for="_remember_me">Remember me</label>
+            <div class="form-group">
+                <input type="password" name="_password" id="password" 
+                       class="form-control" placeholder="MOT DE PASSE" required>
             </div>
-        #}
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            Sign in
-        </button>
-    </form>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <div class="social-login">
+                <button type="button" class="social-btn facebook">
+                {# <img src="{{ asset('assets/images/facebook.png') }}" alt="logo Facebook"> #}
+                    <span class="icon">F</span>
+                </button>
+                <button type="button" class="social-btn google">
+                    <span class="icon">G</span>
+                </button>
+                <button type="button" class="social-btn apple">
+                    <span class="icon"></span>
+                </button>
+                <button type="button" class="social-btn xbox">
+                    <span class="icon">X</span>
+                </button>
+                <button type="button" class="social-btn playstation">
+                    <span class="icon">P</span>
+                </button>
+            </div>
+
+
+            <button class="submit-btn" type="submit">
+                <span class="arrow">→</span>
+            </button>
+        </form>
+
+        <div class="login-footer">
+            <a href="#" class="cant-login">IMPOSSIBLE DE VOUS CONNECTER ?</a>
+            <a href="{{ path('app_register') }}" class="create-account">CRÉER UN COMPTE</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

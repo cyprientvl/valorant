@@ -52,8 +52,14 @@
                     {% for item in items %}
                         {% if type == 'skins' %}
                             <div class="item-skin">
-                                <img src="{{ item.displayIcon }}" alt="{{ item.displayName }}">
-                                <p>{{ item.displayName }}</p>
+                                <a href="{{ path('app_item', {
+                                    'id': item.uuid,
+                                    'chromaId': item.chromas[0].uuid,
+                                    'type': type
+                                }) }}">
+                                    <img src="{{ item.displayIcon }}" alt="{{ item.displayName }}">
+                                    <p>{{ item.displayName }}</p>
+                                </a>
                             </div>
                         {% elseif type == 'titles' %}
                             <div class="item-title">

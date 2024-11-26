@@ -103,17 +103,6 @@ class ItemService
             return "playertitles/";
     }
 
-    public function getUrlByItemType($type)
-    {
-        if ($this->isWeapon($type))
-            return "https://valorant-api.com/v1/weapons/skins/";
-        if ($this->isPlayerCard($type))
-            return "https://valorant-api.com/v1/playercards/";
-        if ($this->isSpray($type))
-            return "https://valorant-api.com/v1/sprays/";
-        if ($this->isPlayerTitle($type))
-            return "https://valorant-api.com/v1/playertitles/";
-    }
 
     public function isWeapon($type)
     {
