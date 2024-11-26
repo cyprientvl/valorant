@@ -87,7 +87,6 @@ class ItemService
                 return $item;
             }
         }
-
         return "Melee";
     }
 
@@ -102,7 +101,6 @@ class ItemService
         if ($this->isPlayerTitle($type))
             return "playertitles/";
     }
-
 
     public function isWeapon($type)
     {

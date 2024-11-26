@@ -9,13 +9,15 @@ use App\Service\ItemService;
 use App\Service\LockerService;
 use App\Service\ChromaService;
 use App\Service\LockerItemService;
+use App\Service\ValorantApi;
 
 class ItemController extends AbstractController
 {
     public function __construct(private LockerService $lockerService, 
     private ItemService $itemService,
     private ChromaService $chromaService,
-    private LockerItemService $lockerItemService){
+    private LockerItemService $lockerItemService,
+    private ValorantApi $valorantApi){
     }
 
 
@@ -37,12 +39,10 @@ class ItemController extends AbstractController
             $this->chromaService->addChromas($item['chromas'], $itemInDb);
         }
 
-        $itemInDb = $this->itemService->getItemInBd($id);
         $chroma = null;
         foreach ($itemInDb->getChromas() as $ch) {
             if($ch->getId() == $chromaId) $chroma = $ch;
         }
-
         $this->lockerItemService->addLockerItem($locker, $itemInDb, $chroma);
 
         return $this->redirectToRoute('app_locker', ['id' => $locker->getId()]);        
@@ -51,15 +51,16 @@ class ItemController extends AbstractController
     }
 
 
-    #[Route('/item/{id}/{chromaId}/{type}', name: 'app_item')]
-    public function index($id, $chromaId, $type): Response
+    #[Route('/item/{id}/{chromaId}', name: 'app_item')]
+    public function index($id, $chromaId): Response
     {
 
-        $item = $this->itemService->getItem($id, $type);
+        $item = $this->itemService->getItem($id, 'Melee');
 
         if(empty($item)){
             return $this->redirectToRoute('app_home');        
         }
+        $type = $this->itemService->getWeaponType($item['data']['displayName']);
         $chroma = null;
         foreach ($item['data']['chromas'] as $ch) {
             if($ch['uuid'] == $chromaId) $chroma = $ch;
@@ -70,12 +71,23 @@ class ItemController extends AbstractController
         }
 
         $chromaIsInMyLocker = false;
+        $itemIdInMyLocker = 0;
         $locker = $this->lockerService->getMyLocker();
         
         if(!empty($locker)){
             foreach($locker->getLockerItems() as $lockerItem){
-                if($lockerItem->getChroma()->getId() == $chromaId) $chromaIsInMyLocker = true;
+                if($lockerItem->getChroma()->getId() == $chromaId){
+                    $chromaIsInMyLocker = true;
+                    $itemIdInMyLocker = $lockerItem->getId();
+                }
             }
+        }
+
+        $name = explode(' ', $item['data']['displayName'])[0];
+
+        $recomendation = $this->valorantApi->search("weapons/skins/", "displayName", $name);
+        foreach ($recomendation as $key => $value) {
+            $recomendation[$key]['type'] = $this->itemService->getWeaponType($recomendation[$key]['displayName']);
         }
 
         return $this->render('item/index.html.twig', [
@@ -84,7 +96,9 @@ class ItemController extends AbstractController
             'type' => $type,
             'chroma' => $chroma,
             'chromaIsInMyLocker' => $chromaIsInMyLocker,
-            'lockerId' => strval($locker->getId())
+            'itemIdInMyLocker' => $itemIdInMyLocker,
+            'lockerId' => strval($locker->getId()),
+            'recomendation' => $recomendation
         ]);
     }
 }

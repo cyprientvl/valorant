@@ -19,7 +19,7 @@ class LockerItemService
     public function __construct(
         private HttpClientInterface $client,
         private RequestStack $requestStack,
-        private LockerItemRepository $lockerRepository
+        private LockerItemRepository $lockerItemRepository
     ) {
 
     }
@@ -34,12 +34,21 @@ class LockerItemService
 
         $lockerItem->setLocker($locker);
         
-        $this->lockerRepository->add($lockerItem);
+        $this->lockerItemRepository->add($lockerItem);
 
     }
 
-    public function removeItem($locker, $itemId){
-            
+    public function removeItem($itemId){
+        $lockerItem = $this->lockerItemRepository->get($itemId);
+        if(empty($lockerItem)){
+            return;
+        }
+        $this->lockerItemRepository->remove($lockerItem);
+    }
+
+    public function updateLockerItemMainType($lockerItem){
+        $lockerItem->setIsMainItemType(!$lockerItem->getIsMainItemType());
+        $this->lockerItemRepository->update($lockerItem);
     }
 
 

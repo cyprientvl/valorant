@@ -2,20 +2,24 @@
 
 namespace App\Controller;
 
+use App\Form\LockerItemForm;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Service\LockerService;
 use App\Service\ItemService;
+use App\Service\LockerItemService;
+use Symfony\Component\HttpFoundation\Request; 
 
 class LockerItemController extends AbstractController
 {
     public function __construct(private LockerService $lockerService,
-    private ItemService $itemService){
+    private ItemService $itemService,
+    private LockerItemService $lockerItemService){
     }
     
     #[Route('/locker/{id}/{itemId}', name: 'app_locker_item')]
-    public function index($id, $itemId): Response
+    public function index(Request $request, $id, $itemId): Response
     {
 
         $locker = $this->lockerService->getLocker($id);
@@ -31,12 +35,24 @@ class LockerItemController extends AbstractController
         }
         $allItem = $this->itemService->getItemByTypeInLocker($locker, $item->getItem()->getItemType());
 
+        $formUpdate = $this->createForm(LockerItemForm::class, ['name' => $locker->getName()]);
+        $formUpdate->handleRequest($request);
+
+        if ($formUpdate->isSubmitted() && $formUpdate->isValid()) {
+            $data = $formUpdate->getData();
+
+            $this->lockerItemService->updateLockerItemMainType($item);
+
+            return $this->redirectToRoute('app_locker_item', ['id' => $id, 'itemId' => $itemId]);        
+        }
 
         return $this->render('locker_item/index.html.twig', [
             'controller_name' => 'LockerItemController',
             'item' => $item,
             'allItem' => $allItem,
-            'lockerId' => $id
+            'lockerId' => $id,
+            'lockerItemId' => $itemId,
+            'formUpdate' => $formUpdate
         ]);
     }
 
@@ -47,9 +63,9 @@ class LockerItemController extends AbstractController
         if(empty($locker) || !$this->lockerService->isMyLocker($locker)){
             return $this->redirectToRoute('app_home');        
         }
+        $this->lockerItemService->removeItem($itemId);
 
-        
-
+        return $this->redirectToRoute('app_locker', ['id' => $id]);        
     }
 
 }
