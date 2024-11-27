@@ -1,19 +1,72 @@
-{% extends 'base.html.twig' %}
+{% extends 'baselogin.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Créer un compte{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+<div class="login-container">
+    <div class="login-box">
+        <h1>Créer un compte</h1>
 
-    {{ form_errors(registrationForm) }}
+        {{ form_start(registrationForm, {'attr': {'class': 'login-form'}}) }}
+            {% if form_errors(registrationForm) %}
+                <div class="alert alert-danger">
+                    {{ form_errors(registrationForm) }}
+                </div>
+            {% endif %}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+            <div class="form-group">
+                {{ form_widget(registrationForm.username, {
+                    'attr': {
+                        'class': 'form-control',
+                        'placeholder': 'NOM D\'UTILISATEUR'
+                    }
+                }) }}
+            </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <div class="form-group">
+                {{ form_widget(registrationForm.plainPassword, {
+                    'attr': {
+                        'class': 'form-control',
+                        'placeholder': 'MOT DE PASSE'
+                    }
+                }) }}
+            </div>
+
+            <div class="form-check">
+                {{ form_widget(registrationForm.agreeTerms, {
+                    'attr': {
+                        'class': 'checkbox-input'
+                    }
+                }) }}
+                <label for="{{ registrationForm.agreeTerms.vars.id }}">J'accepte les conditions d'utilisation</label>
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="social-btn facebook">
+                    <span class="icon">F</span>
+                </button>
+                <button type="button" class="social-btn google">
+                    <span class="icon">G</span>
+                </button>
+                <button type="button" class="social-btn apple">
+                    <span class="icon"></span>
+                </button>
+                <button type="button" class="social-btn xbox">
+                    <span class="icon">X</span>
+                </button>
+                <button type="button" class="social-btn playstation">
+                    <span class="icon">P</span>
+                </button>
+            </div>
+
+            <button class="submit-btn" type="submit">
+                <span class="arrow">→</span>
+            </button>
+        {{ form_end(registrationForm) }}
+
+        <div class="login-footer">
+            <a href="{{ path('app_login') }}" class="cant-login">DÉJÀ UN COMPTE ? CONNECTEZ-VOUS</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

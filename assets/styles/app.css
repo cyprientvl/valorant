@@ -767,7 +767,20 @@ footer .social a svg{
   z-index: 1;
 }
 
-.item-skin img {
+.item-skin a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+}
+
+.item-skin a img {
   width: 350px;
   height: 150px;
   object-fit: contain;
@@ -775,7 +788,7 @@ footer .social a svg{
   z-index: 1;
 }
 
-.item-skin p {
+.item-skin a p {
   font-weight: 500;
   text-wrap: wrap;
   max-width: 150px;
@@ -1017,6 +1030,7 @@ footer .social a svg{
     background-color: #FF4655;
 }
 
+<<<<<<< HEAD
 .top-locker-main .top-locker-background{
   position: absolute;
   left: 0;
@@ -1238,3 +1252,227 @@ footer .social a svg{
   color: white;
   font-size: 20px;
 }
+=======
+
+/* CSS Register et Login */
+
+/* Login styles */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('../images/arcane_bg.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.login-box {
+    background-image: url('../images/bg_div.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 48px 32px;
+    border-radius: 8px;
+    width: 400px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 20px;
+}
+
+.login-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.login-box > * {
+    position: relative;
+    z-index: 2;
+}
+
+.login-form {
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.login-form .form-group {
+    margin: 0;
+    width: 100%;
+}
+
+.login-box h1 {
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: rgb(44, 63, 82);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+}
+
+.login-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+    width: 100%;
+}
+
+.social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+    background-color: rgb(44, 63, 82);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.social-btn:hover {
+    background-color: rgb(54, 73, 92);
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.form-check label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(255, 70, 85);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn:hover {
+    background-color: rgb(255, 90, 105);
+}
+
+.login-footer {
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 85%;
+}
+
+.login-footer a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.login-footer a:hover {
+    color: white;
+}
+
+.alert {
+    background-color: rgb(255, 70, 85);
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+/* Styles spécifiques pour le formulaire d'inscription */
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 10px;
+}
+
+.form-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    background-color: rgb(44, 63, 82);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    accent-color: rgb(255, 70, 85);
+}
+
+.form-check label {
+    display: block !important;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Style pour les messages d'erreur du formulaire */
+.alert-danger {
+    background-color: rgba(255, 70, 85, 0.9);
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+/* Cache les labels par défaut de Symfony */
+.login-form label {
+    display: none;
+}
+
+.login-form .form-check label {
+    display: block !important;
+}
+
+/* Style pour les messages d'erreur individuels des champs */
+.form-error {
+    color: rgb(255, 70, 85);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+>>>>>>> 101c6735224d81c0956455d039057df786744538
