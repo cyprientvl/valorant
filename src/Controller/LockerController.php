@@ -7,25 +7,60 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Service\LockerService;
 use App\Form\CreateLocker;
+use App\Form\SearchLocker;
 use App\Form\UpdateLocker;
+use App\Service\ItemService;
 use Symfony\Component\HttpFoundation\Request; 
 
 class LockerController extends AbstractController
 {
 
-    public function __construct(private LockerService $lockerService){
+    public function __construct(private LockerService $lockerService,
+    private ItemService $itemService){
     }
 
     #[Route('/top-locker', name: 'app_locker_top')]
-    public function topLocker(){
+    public function topLocker(Request $request){
 
-        $lockers = $this->lockerService->getTopLocker();
+        $form = $this->createForm(SearchLocker::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            return $this->redirectToRoute('app_locker_top', ['name' => $data['name']]);        
+        }
 
-        dd($lockers);
+        $name = $request->query->get('name');
+        $lockers = [];
+        
+        if(!empty($name)){
+            $lockers = $this->lockerService->searchLocker($name);
+        }else{
+            $lockers = $this->lockerService->getTopLocker();
+        }
 
+        $totalLocker = $this->lockerService->getTotalLocker();
+
+        foreach ($lockers as $l) {
+            $banners = $this->itemService->getItemByTypeInLocker($l, 'PlayerCard');
+            if(!empty($banners[0])){
+                $l->banner = $banners[0]->getItem()->getDisplayIcon();
+            }
+        } 
+
+        $poduim = $this->lockerService->getLockerPoduim();
+        foreach ($poduim as $l) {
+            $banners = $this->itemService->getItemByTypeInLocker($l, 'PlayerCard');
+            if(!empty($banners[0])){
+                $l->banner = $banners[0]->getItem()->getDisplayIcon();
+            }
+        } 
+        
         return $this->render('locker/top-locker.html.twig', [
             'controller_name' => 'LockerController',
-            'lockers' =>$lockers 
+            'lockers' =>$lockers,
+            'poduim' => $poduim,
+            'totalLocker' => $totalLocker,
+            'formSearch' => $form 
         ]);
     }
 

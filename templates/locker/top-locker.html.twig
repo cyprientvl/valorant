@@ -4,6 +4,79 @@
 
 {% block body %}
 
-<p>fdsfd</p>
+<main class="top-locker-main">
 
+        <div class="top">
+            <img class="top-locker-background" src="https://imgsvc.trackercdn.com/url/height(1000),quality(40)/https%3A%2F%2Ftrackercdn.com%2Fcdn%2Ftracker.gg%2Fvalorant%2Fimages%2Fvalorant-home-hero.jpg/image.jpg">
+        
+            <div class="left">
+                <div class="valorant">
+                    <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="title-icon" data-v-51ef5ca0=""><path d="m2.2 4 .1.1c.2.3 11.8 14.8 12.8 16v.1a.1.1 0 0 1-.1.1H8.8a.52.52 0 0 1-.4-.2c-.2-.2-4.4-5.4-6.3-7.9A.3.3 0 0 0 2 12V4.1a.35.35 0 0 1 .2-.1m19.8.2c0-.1-.1-.1-.1-.2h-.1l-.2.2c-.9 1.1-8.1 10.1-8.3 10.3l-.1.1c0 .1 0 .1.1.1h6.2c.1 0 .2-.1.3-.2l.2-.2c.5-.7 1.7-2.2 1.8-2.3 0-.1 0-.1.1-.2v-.1c.1-2.4.1-4.9.1-7.5"></path></svg>
+                    </div>
+                    <div>
+                        <p class="title">VALORANT COS</p>
+                        <p class="subtitle">Check Detailed Valorant locker and top likes</p>
+                    </div>
+                </div>
+                <div class="search-locker">
+
+                    
+
+                    <div class="search-locker-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0" viewBox="0 0 150 150" class="platform-icon platform-riot icon" data-v-7d9959e6="" data-v-c97a4dd3=""><path d="M80.115 8.324 0 45.356l19.96 75.96 15.265-1.897-4.245-47.69 5.058-2.258 8.58 48.774 25.923-3.162-4.607-52.657 4.878-2.167 9.483 53.65 26.284-3.251-5.058-57.715 4.967-2.168 10.387 58.618 25.922-3.161V24.04zM82.011 123.393l1.265 7.497 59.521 9.935v-24.838l-60.695 7.406z"></path></svg>
+                    </div>
+                    <div class="input-search">
+                        {{ form_start(formSearch) }}
+                        {{ form_row(formSearch.name) }}
+                        {{ form_end(formSearch) }}
+                    </div>
+                </div>
+
+                <p class="locker-tracked">Total locker <span>{{totalLocker}}</span></p>
+            </div>
+
+            <div class="right">
+                {% for p in poduim  %}
+                    <a class="locker" href="/locker/{{p.getId()}}">
+                        <div class="rank">
+                            <p class="hash">#</p>
+                            <p class="rank-p">{{ loop.index }}</p>
+                        </div>
+
+                        {% if p.banner is defined %}
+                            <img src="{{p.banner}}">
+                        {% else %}
+                            <img src="https://media.valorant-api.com/playercards/1711d20d-4b1c-c64a-14be-d4ae58a457c6/largeart.png">
+                        {% endif %}
+
+
+                        <p class="username">{{p.getName()}}</p>
+
+                        <p class="top-likes">Top likes</p>
+                        <p class="number-likes">{{p.getLikes()}}</p>
+                    </a>
+                {% endfor %}
+                
+
+            </div>
+        </div>
+
+        <div class="top-locker-result">
+            {% for l in lockers  %}
+                <a class="ligne" href="/locker/{{l.getId()}}">
+                    <div class="left">
+                        <p class="rank">{{ loop.index }}</p>
+                        {% if l.banner is defined %}
+                            <img src="{{l.banner}}">
+                        {% else %}
+                            <img src="https://media.valorant-api.com/playercards/1711d20d-4b1c-c64a-14be-d4ae58a457c6/largeart.png">
+                        {% endif %}                        
+                        <p class="username">{{l.getName()}}</p>
+                    </div>
+                    <p class="likes">{{l.getLikes()}}</p>
+                </a>
+            {% endfor %}
+        </div>
+    </main>
 {% endblock %}

@@ -71,12 +71,13 @@ class ItemService
         $returns = [];
         $items = $locker->getLockerItems();
 
-
         foreach ($items as $item) {
             if ($item->getItem()->getItemType() === $type) {
                 array_push($returns, $item);
             }
         }
+
+        return $returns;
     }
 
     public function getWeaponType($name)

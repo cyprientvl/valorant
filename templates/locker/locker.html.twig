@@ -9,31 +9,42 @@
         <img class="image-background" src="https://imgsvc.trackercdn.com/url/height(1000),quality(40)/https%3A%2F%2Ftrackercdn.com%2Fcdn%2Ftracker.gg%2Fvalorant%2Fimages%2Fvalorant-home-hero.jpg/image.jpg"> 
 
         <div class="locker">
+            {% if isMyLocker %}
+                <div class="locker-form">
+                    {{ form_start(updateForm) }}
+                        <div style="width: 300px">
+                            <label>Locker name:</label>
+                            {{ form_row(updateForm.name) }}
+                        </div>
+                        
+                        <button type="submit">
+                            Valider
+                        </button>
+                    {{ form_end(updateForm) }}
 
-            <div class="locker-form">
-                {{ form_start(updateForm) }}
-                    <div style="width: 300px">
-                        <label>Locker name:</label>
-                        {{ form_row(updateForm.name) }}
+                    
+                    <div>
+                        <a href="/locker/{{locker.id}}/update-public">
+                        <p>
+                            <span class="bg"></span>
+                            <span class="base"></span>
+                            <span class="text">{{ locker.isPublic == 1 ?  'Set to Private ' : 'Set To Public'}}</span>
+                        </p>
+                        </a>
                     </div>
-                     
-                    <button type="submit">
-                        Valider
-                    </button>
-                {{ form_end(updateForm) }}
+                </div>
+            {% else %}
+                <div class="locker-form">
+                    <form>
+                        <label>Locker name:</label>
+                        <input type="text" value="{{locker.getName()}}" class="locker-name">
+                    </form>
+                </div>
+            {% endif %}
 
-                
-                <div>
-                    <a href="/locker/{{locker.id}}/update-public">
-                      <p>
-                        <span class="bg"></span>
-                        <span class="base"></span>
-                        <span class="text">{{ locker.isPublic == 1 ?  'Set to Private ' : 'Set To Public'}}</span>
-                      </p>
-                    </a>
-                  </div>
-                  
-            </div>
+
+            <!-- isMyLocker -->
+            
 
             <div class="locker-content">
                 <div class="locker-ligne">

@@ -29,7 +29,7 @@ class LockerService{
         $user = $this->security->getUser();
         $locker = $this->lockerRepository->findLockerById($id);
         
-        if(empty($locker) || ($locker->getUser()->getId() != $user->getId() && $locker->getIsPublic())){
+        if(empty($locker) || ($locker->getUser()->getId() != $user->getId() && !$locker->isPublic())){
             return null;
         }
 
@@ -87,5 +87,17 @@ class LockerService{
 
     public function getTopLocker(){
         return $this->lockerRepository->getTopLocker();
+    }
+
+    public function getTotalLocker(){
+        return $this->lockerRepository->getTotalLocker();
+    }
+
+    public function searchLocker($search){
+        return $this->lockerRepository->getLockerByusername($search);
+    }
+
+    public function getLockerPoduim(){
+        return $this->lockerRepository->getLockerPoduim();
     }
 }

@@ -9,13 +9,15 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Service\LockerService;
 use App\Service\ItemService;
 use App\Service\LockerItemService;
+use App\Service\ValorantApi;
 use Symfony\Component\HttpFoundation\Request; 
 
 class LockerItemController extends AbstractController
 {
     public function __construct(private LockerService $lockerService,
     private ItemService $itemService,
-    private LockerItemService $lockerItemService){
+    private LockerItemService $lockerItemService,
+    private ValorantApi $valorantApi){
     }
     
     #[Route('/locker/{id}/{itemId}', name: 'app_locker_item')]
@@ -34,17 +36,16 @@ class LockerItemController extends AbstractController
             return $this->redirectToRoute('app_home');        
         }
         $allItem = $this->itemService->getItemByTypeInLocker($locker, $item->getItem()->getItemType());
-
         $formUpdate = $this->createForm(LockerItemForm::class, ['name' => $locker->getName()]);
         $formUpdate->handleRequest($request);
 
         if ($formUpdate->isSubmitted() && $formUpdate->isValid()) {
-            $data = $formUpdate->getData();
 
             $this->lockerItemService->updateLockerItemMainType($item);
 
             return $this->redirectToRoute('app_locker_item', ['id' => $id, 'itemId' => $itemId]);        
         }
+
 
         return $this->render('locker_item/index.html.twig', [
             'controller_name' => 'LockerItemController',
@@ -52,7 +53,8 @@ class LockerItemController extends AbstractController
             'allItem' => $allItem,
             'lockerId' => $id,
             'lockerItemId' => $itemId,
-            'formUpdate' => $formUpdate
+            'isMyLocker' => $this->lockerService->isMyLocker($locker),
+            'formUpdate' => $formUpdate,
         ]);
     }
 

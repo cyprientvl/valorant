@@ -13,20 +13,24 @@
 
         <div class="choice" style="gap: 30px; align-items: center;">
             <p>SKINS</p>
-            {{ form_start(formUpdate) }}
-                <button type="submit" class="locker-form" style="padding-top: 0px">
-                    <div>
-                        <a>
-                            <p>
-                                <span class="bg"></span>
-                                <span class="base"></span>
-                                <span class="text">{{item.getIsMainItemType() ? 'Enlever du premier plan' : 'Mettre au premier plan'}}</span>
-                            </p>
-                        </a>
-                    </div>
-                </button>
-            {{ form_end(formUpdate) }}
+            {% if isMyLocker  %}
 
+                {{ form_start(formUpdate) }}
+                    <button type="submit" class="locker-form" style="padding-top: 0px">
+                        <div>
+                            <a>
+                                <p>
+                                    <span class="bg"></span>
+                                    <span class="base"></span>
+                                    <span class="text">{{item.getIsMainItemType() ? 'Enlever du premier plan' : 'Mettre au premier plan'}}</span>
+                                </p>
+                            </a>
+                        </div>
+                    </button>
+                {{ form_end(formUpdate) }}
+            {% else %}
+                <p>Other</p>
+            {% endif %}   
             
         </div>
 
@@ -46,17 +50,22 @@
             </div>
 
             <p class="skin-title">{{item.getChroma().getDisplayName()}}</p>
-            <div class="locker-form">
-                <div>
-                    <a href="/locker/{{lockerId}}/delete/{{lockerItemId}}">
-                      <p>
-                        <span class="bg"></span>
-                        <span class="base"></span>
-                        <span class="text">REMOVE SKIN</span>
-                      </p>
-                    </a>
+            {% if isMyLocker  %}
+                <div class="locker-form">
+                    <div>
+                        <a href="/locker/{{lockerId}}/delete/{{lockerItemId}}">
+                        <p>
+                            <span class="bg"></span>
+                            <span class="base"></span>
+                            <span class="text">REMOVE SKIN</span>
+                        </p>
+                        </a>
+                    </div>
                 </div>
-            </div>
+             {% else %}
+                <div class="locker-form">
+                </div>   
+             {% endif %}   
             
         </div>
         
@@ -66,6 +75,7 @@
                     <img src="{{i.getChroma().getDisplayIcon()}}">
                 </a>
             {% endfor %}
+           
         </div>
 
     </main>
