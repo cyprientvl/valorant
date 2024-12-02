@@ -7,7 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_USERNAME', fields: ['username'])]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
@@ -35,6 +36,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(targetEntity: Locker::class, mappedBy: 'user')]
     private ?Locker $locker = null;
+
+    #[ORM\ManyToMany(targetEntity: Locker::class, mappedBy: "userLikes")]
+    private Collection $likedLockers;
+
+    public function __construct()
+    {
+        $this->likedLockers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -121,5 +130,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->locker = $locker;
 
         return $this;
+    }
+
+    public function getLikedLockers(): Collection
+    {
+        return $this->likedLockers;
     }
 }

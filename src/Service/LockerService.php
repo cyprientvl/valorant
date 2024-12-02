@@ -100,16 +100,5 @@ class LockerService{
         return $this->lockerRepository->getLockerPoduim();
     }
 
-    public function likeLocker($locker){
-        $user = $this->security->getUser();  
-        if(empty($user)) return;
-        $locker->addLikes($user);
-        $this->lockerRepository->updateLocker($locker);
-    }
-
-    public function isLiked($locker){
-        $user = $this->security->getUser();  
-        if(empty($user)) return;
-        return $locker->isLiked($user);
-    }
+  
 }

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LockerItemController!{% endblock %}
+
+{% block body %}
+
+{% for locker in lockers  %}
+        <p>{{locker.getName()}}</p>
+{% endfor %}
+
+{% endblock %}

@@ -31,8 +31,8 @@ class Locker
     #[ORM\OneToOne(targetEntity: User::class)]
     private User $user;
 
-    #[ORM\ManyToMany(targetEntity: User::class)]
-    #[ORM\JoinTable(name: 'locker_user_likes')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: "likedLockers")]
+    #[ORM\JoinTable(name: 'locker_user_likes')] 
     private Collection $userLikes;
 
     public function __construct(string $name, bool $isPublic)
