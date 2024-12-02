@@ -20,6 +20,7 @@ class HomeController extends AbstractController
         $skins = $this->valorantApi->getSkins(true);
         $bundles = $this->valorantApi->getBundles(true);
 
+
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);

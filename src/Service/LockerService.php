@@ -29,7 +29,7 @@ class LockerService{
         $user = $this->security->getUser();
         $locker = $this->lockerRepository->findLockerById($id);
         
-        if(empty($locker) || ($locker->getUser()->getId() != $user->getId() && $locker->getIsPublic())){
+        if(empty($locker) || ($locker->getUser()->getId() != $user->getId() && !$locker->isPublic())){
             return null;
         }
 
@@ -72,15 +72,32 @@ class LockerService{
         $this->lockerRepository->createLocker($locker);
     }
 
-    public function updateLocker($locker, $name = null, $likes = null, $isPublic = null){
-
-        if(empty($locker) || !isMyLocker($locker)) return;
+    public function updateLocker($locker, $name = null, $isPublic = null, $likes = null){
+        if(empty($locker) || !$this->isMyLocker($locker)) return;
 
         if(!empty($name)) $locker->setName($name);
         if(!empty($likes)) $locker->setLikes($likes);
-        if(!empty($isPublic)) $locker->setIsPublic($isPublic);
- 
+        if(isset($isPublic)){
+            $locker->setIsPublic($isPublic);
+        }
+
         $this->lockerRepository->updateLocker($locker);
 
+    }
+
+    public function getTopLocker(){
+        return $this->lockerRepository->getTopLocker();
+    }
+
+    public function getTotalLocker(){
+        return $this->lockerRepository->getTotalLocker();
+    }
+
+    public function searchLocker($search){
+        return $this->lockerRepository->getLockerByusername($search);
+    }
+
+    public function getLockerPoduim(){
+        return $this->lockerRepository->getLockerPoduim();
     }
 }

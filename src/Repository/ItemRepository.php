@@ -16,6 +16,21 @@ class ItemRepository extends ServiceEntityRepository
         parent::__construct($registry, Item::class);
     }
 
+    public function getItem($id){
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.id = :id')
+            ->setParameter('id', $id)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    public function add($item){
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($item);
+        $entityManager->flush();   
+    }
+
     //    /**
     //     * @return Item[] Returns an array of Item objects
     //     */

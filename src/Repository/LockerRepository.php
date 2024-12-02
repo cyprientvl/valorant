@@ -17,6 +17,24 @@ class LockerRepository extends ServiceEntityRepository
         parent::__construct($registry, Locker::class);
     }
 
+    public function getLockerByusername($search){
+        return $this->createQueryBuilder('l')
+        ->join('l.user', 'u')
+        ->andWhere('l.isPublic = 1')
+        ->andWhere(
+            $this->createQueryBuilder('l')
+                ->expr()
+                ->orX(
+                    'l.name = :search',
+                    'u.username = :search'
+                )
+        )
+        ->setParameter('search', $search)
+        ->orderBy('l.likes', 'DESC') 
+        ->setMaxResults(50)
+        ->getQuery()
+        ->getResult();
+    }
 
     public function findLockerByUserId($userId)
     {
@@ -49,6 +67,35 @@ class LockerRepository extends ServiceEntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function getTopLocker(){
+        return $this->createQueryBuilder('l')
+            ->join('l.user', 'u')
+            ->andWhere('l.isPublic = 1')
+            ->orderBy('l.likes', 'DESC') 
+            ->setMaxResults(50)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getTotalLocker(){
+        return $this->createQueryBuilder('l')
+            ->select('COUNT(l.id)') 
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function getLockerPoduim(){
+        return $this->createQueryBuilder('l')
+            ->join('l.user', 'u')
+            ->andWhere('l.isPublic = 1')
+            ->orderBy('l.likes', 'DESC') 
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
+
+    
 
     public function createLocker($locker){
         $entityManager = $this->getEntityManager();

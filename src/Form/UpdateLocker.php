@@ -14,12 +14,7 @@ class UpdateLocker extends AbstractType
         $builder
             ->add('name', TextType::class, [
                 'label' => false,
-                'attr' => ['class' => 'input-search', 'placeholder' => 'Creer']
-            ])
-            ->add('isPublic', CheckboxType::class, [
-                'label' => 'Is Public',
-                'required' => false, 
-                'attr' => ['class' => 'checkbox-class'],
-            ]);            
+                'attr' => ['class' => 'locker-name', 'placeholder' => 'Nom du locker']
+            ]);           
     }
 }

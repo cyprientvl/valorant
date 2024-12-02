@@ -8,55 +8,74 @@
         <img class="main-weapon-detail-bg" src="https://trackercdn.com/cdn/tracker.gg/premium/pattern-poly.png?v=2">
 
         <div class="title">
-            <p>SPECTRE</p>
+            <p>{{item.getItem().getItemType()}}</p>
         </div>
 
-        <div class="choice">
+        <div class="choice" style="gap: 30px; align-items: center;">
             <p>SKINS</p>
-            <p>OTHER</p>
+            {% if isMyLocker  %}
+
+                {{ form_start(formUpdate) }}
+                    <button type="submit" class="locker-form" style="padding-top: 0px">
+                        <div>
+                            <a>
+                                <p>
+                                    <span class="bg"></span>
+                                    <span class="base"></span>
+                                    <span class="text">{{item.getIsMainItemType() ? 'Enlever du premier plan' : 'Mettre au premier plan'}}</span>
+                                </p>
+                            </a>
+                        </div>
+                    </button>
+                {{ form_end(formUpdate) }}
+            {% else %}
+                <p>Other</p>
+            {% endif %}   
+            
         </div>
 
         <div class="img-skin">
-            <img  src="https://media.valorant-api.com/weaponskinchromas/48b6e421-4f93-5a00-62b3-20a1d320b040/displayicon.png">
+            <img src="{{item.getChroma().getDisplayIcon()}}">
         </div>
 
         <div class="skin-bottom">
             <div class="chromas">
-                <a class="chroma">
-                    <img  src="https://media.valorant-api.com/weapons/462080d1-4035-2937-7c09-27aa2a5c27a7/displayicon.png">
-                </a>
-                <a class="chroma">
-                    <img  src="https://media.valorant-api.com/weaponskinchromas/e6586300-4434-2dee-8867-45b47980f7a5/fullrender.png">
-
-                </a>
-            </div>
-
-            <p class="skin-title">PRIME SPECTRE</p>
-            <div class="locker-form">
-                <div>
-                    <a href="#">
-                      <p>
-                        <span class="bg"></span>
-                        <span class="base"></span>
-                        <span class="text">ADD SKIN</span>
-                      </p>
+            
+                {% for ch in item.getItem().getChromas()  %}
+                    <a class="chroma" href="/item/{{item.getItem().getId()}}/{{ch.getId()}}">
+                        <img src="{{ch.getDisplayIcon()}}" >
                     </a>
-                </div>
+                {% endfor %}
+                
             </div>
+
+            <p class="skin-title">{{item.getChroma().getDisplayName()}}</p>
+            {% if isMyLocker  %}
+                <div class="locker-form">
+                    <div>
+                        <a href="/locker/{{lockerId}}/delete/{{lockerItemId}}">
+                        <p>
+                            <span class="bg"></span>
+                            <span class="base"></span>
+                            <span class="text">REMOVE SKIN</span>
+                        </p>
+                        </a>
+                    </div>
+                </div>
+             {% else %}
+                <div class="locker-form">
+                </div>   
+             {% endif %}   
             
         </div>
         
         <div class="list-items">
-            <a class="item">
-                <img  src="https://media.valorant-api.com/weapons/462080d1-4035-2937-7c09-27aa2a5c27a7/displayicon.png">
-            </a>
-            <a class="item">
-                <img  src="https://media.valorant-api.com/weapons/462080d1-4035-2937-7c09-27aa2a5c27a7/displayicon.png">
-            </a>
-            <a class="item">
-                <img  src="https://media.valorant-api.com/weapons/462080d1-4035-2937-7c09-27aa2a5c27a7/displayicon.png">
-                <img class="lock" src="lock.png">
-            </a>
+            {% for i in allItem  %}
+                <a class="item" href="/locker/{{lockerId}}/{{i.getId()}}">
+                    <img src="{{i.getChroma().getDisplayIcon()}}">
+                </a>
+            {% endfor %}
+           
         </div>
 
     </main>

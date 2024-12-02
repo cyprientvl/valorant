@@ -1,20 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ItemController!{% endblock %}
+{% block title %}Hello LockerItemController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<main class="main-weapon-detail">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/iutbgdin/Documents/symphony/valorant/src/Controller/ItemController.php</code></li>
-        <li>Your template at <code>/home/iutbgdin/Documents/symphony/valorant/templates/item/index.html.twig</code></li>
-    </ul>
-</div>
+        <img class="main-weapon-detail-bg" src="https://trackercdn.com/cdn/tracker.gg/premium/pattern-poly.png?v=2">
+
+        <div class="title">
+            <p>{{type}}</p>
+        </div>
+
+        <div class="choice">
+            <p>SKINS</p>
+            <p>OTHER</p>
+        </div>
+
+        <div class="img-skin">
+            <img src="{{chroma.fullRender}}">
+        </div>
+
+        <div class="skin-bottom">
+            <div class="chromas">
+            
+                {% for ch in item.chromas  %}
+                    <a class="chroma" href="/item/{{item['uuid']}}/{{ch.uuid}}">
+                        <img src="{{ch.fullRender}}" >
+                    </a>
+                {% endfor %}
+                
+            </div>
+
+            <p class="skin-title">{{chroma.displayName}}</p>
+            <div class="locker-form">
+                <div>
+                    <a href="{{chromaIsInMyLocker ? '/locker/' ~ lockerId ~ '/' ~ itemIdInMyLocker : '/item/add/' ~ item.uuid ~ '/' ~ chroma.uuid }}">
+                      <p>
+                        <span class="bg"></span>
+                        <span class="base"></span>
+                        <span class="text">{{chromaIsInMyLocker ? 'SEE IN MY LOCKER' : 'ADD SKIN'}}</span>
+                      </p>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="list-items">
+                {% for r in recomendation  %}
+                     <a class="item" href="/item/{{r['uuid']}}/{{r['chromas'][0]['uuid']}}">
+                        <img src="{{r['displayIcon']}}">
+                    </a>
+                {% endfor %}
+        </div>
+
+    </main>
 {% endblock %}

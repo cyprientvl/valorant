@@ -26,6 +26,10 @@ class Chroma
         return $this->item;
     }
 
+    public function setItem($newItem){
+        $this->item = $newItem;
+    }
+
     public function getDisplayIcon()
     {
         return $this->displayIcon;
@@ -39,6 +43,10 @@ class Chroma
     public function getId(): string
     {
         return $this->id;
+    }
+
+    public function setId($id){
+        $this->id = $id;
     }
 
     public function getDisplayName(): string

@@ -7,15 +7,62 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Service\LockerService;
 use App\Form\CreateLocker;
+use App\Form\SearchLocker;
 use App\Form\UpdateLocker;
+use App\Service\ItemService;
 use Symfony\Component\HttpFoundation\Request; 
 
 class LockerController extends AbstractController
 {
 
-    public function __construct(private LockerService $lockerService){
+    public function __construct(private LockerService $lockerService,
+    private ItemService $itemService){
     }
 
+    #[Route('/top-locker', name: 'app_locker_top')]
+    public function topLocker(Request $request){
+
+        $form = $this->createForm(SearchLocker::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            return $this->redirectToRoute('app_locker_top', ['name' => $data['name']]);        
+        }
+
+        $name = $request->query->get('name');
+        $lockers = [];
+        
+        if(!empty($name)){
+            $lockers = $this->lockerService->searchLocker($name);
+        }else{
+            $lockers = $this->lockerService->getTopLocker();
+        }
+
+        $totalLocker = $this->lockerService->getTotalLocker();
+
+        foreach ($lockers as $l) {
+            $banners = $this->itemService->getItemByTypeInLocker($l, 'PlayerCard');
+            if(!empty($banners[0])){
+                $l->banner = $banners[0]->getItem()->getDisplayIcon();
+            }
+        } 
+
+        $poduim = $this->lockerService->getLockerPoduim();
+        foreach ($poduim as $l) {
+            $banners = $this->itemService->getItemByTypeInLocker($l, 'PlayerCard');
+            if(!empty($banners[0])){
+                $l->banner = $banners[0]->getItem()->getDisplayIcon();
+            }
+        } 
+        
+        return $this->render('locker/top-locker.html.twig', [
+            'controller_name' => 'LockerController',
+            'lockers' =>$lockers,
+            'poduim' => $poduim,
+            'totalLocker' => $totalLocker,
+            'formSearch' => $form 
+        ]);
+    }
 
     #[Route('/locker/create', name: 'app_locker_create')]
     public function create(Request $request): Response
@@ -42,6 +89,20 @@ class LockerController extends AbstractController
         ]);
     }
 
+    #[Route('/locker/{id}/update-public', name: 'app_locker_public')]
+    public function updatePublic($id): Response {
+
+        $locker = $this->lockerService->getMyLocker();
+
+        if(intval($id) != $locker->getId()){
+            return $this->redirectToRoute('app_home');       
+        }
+        $this->lockerService->updateLocker($locker, $locker->getName(), !$locker->isPublic());
+
+        return $this->redirectToRoute('app_locker', ['id' => $id]);        
+    }
+
+
     #[Route('/locker/{id}', name: 'app_locker')]
     public function index(Request $request, $id): Response
     {
@@ -53,21 +114,21 @@ class LockerController extends AbstractController
         }
         
         $weapons = $this->lockerService->getWeaponInLocker($locker);
-        $form = $this->createForm(UpdateLocker::class);
+        $form = $this->createForm(UpdateLocker::class, ['name' => $locker->getName()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $this->lockerService->updateLocker($locker, $data['name'], $data['isPublic']);
-            return $this->redirectToRoute('app_locker');        
+            $this->lockerService->updateLocker($locker, $data['name']);
+            return $this->redirectToRoute('app_locker', ['id' => $id]);        
         }
 
-       
         return $this->render('locker/locker.html.twig', [
             'controller_name' => 'LockerController',
             'locker' => $locker,
             'weapons' => $weapons,
-            'isMyLocker' => $this->lockerService->isMyLocker($locker)
+            'isMyLocker' => $this->lockerService->isMyLocker($locker),
+            'updateForm' => $form
         ]);
     }
 
