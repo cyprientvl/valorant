@@ -1030,7 +1030,6 @@ footer .social a svg{
     background-color: #FF4655;
 }
 
-<<<<<<< HEAD
 .top-locker-main .top-locker-background{
   position: absolute;
   left: 0;
@@ -1252,7 +1251,7 @@ footer .social a svg{
   color: white;
   font-size: 20px;
 }
-=======
+
 
 /* CSS Register et Login */
 
@@ -1475,4 +1474,7 @@ footer .social a svg{
     margin-top: 4px;
 }
 
->>>>>>> 101c6735224d81c0956455d039057df786744538
+.thumb-like img{
+  width: 30px;
+  transform: translateY(10px);
+}

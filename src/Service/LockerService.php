@@ -72,11 +72,10 @@ class LockerService{
         $this->lockerRepository->createLocker($locker);
     }
 
-    public function updateLocker($locker, $name = null, $isPublic = null, $likes = null){
+    public function updateLocker($locker, $name = null, $isPublic = null){
         if(empty($locker) || !$this->isMyLocker($locker)) return;
 
         if(!empty($name)) $locker->setName($name);
-        if(!empty($likes)) $locker->setLikes($likes);
         if(isset($isPublic)){
             $locker->setIsPublic($isPublic);
         }
@@ -99,5 +98,18 @@ class LockerService{
 
     public function getLockerPoduim(){
         return $this->lockerRepository->getLockerPoduim();
+    }
+
+    public function likeLocker($locker){
+        $user = $this->security->getUser();  
+        if(empty($user)) return;
+        $locker->addLikes($user);
+        $this->lockerRepository->updateLocker($locker);
+    }
+
+    public function isLiked($locker){
+        $user = $this->security->getUser();  
+        if(empty($user)) return;
+        return $locker->isLiked($user);
     }
 }

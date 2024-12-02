@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20241101140518 extends AbstractMigration
+final class Version20241202112003 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,14 +20,12 @@ final class Version20241101140518 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE chroma DROP FOREIGN KEY FK_FEBB40F5126F525E');
-        $this->addSql('ALTER TABLE chroma ADD CONSTRAINT FK_FEBB40F5126F525E FOREIGN KEY (item_id) REFERENCES item (id)');
+        $this->addSql('ALTER TABLE locker DROP likes');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE chroma DROP FOREIGN KEY FK_FEBB40F5126F525E');
-        $this->addSql('ALTER TABLE chroma ADD CONSTRAINT FK_FEBB40F5126F525E FOREIGN KEY (item_id) REFERENCES chroma (id)');
+        $this->addSql('ALTER TABLE locker ADD likes INT NOT NULL');
     }
 }

@@ -43,7 +43,14 @@
 
                 <ul>
                     <li>
-                        <a class="profile"><img src="https://i2.wp.com/ui-avatars.com/api//cyprien/128?ssl=1"></a>
+                        <div class="profile" style="display: flex; align-items: center; gap: 10px;">
+                            <img src="https://i2.wp.com/ui-avatars.com/api//{{user_username()}}/128?ssl=1">
+                            <p>{{user_username()}}</p>
+
+                            <a href="/logout" style="background-color: #2c3f52; padding: 2px 10px; border-radius: 5px; cursor: pointer;">
+                                <p>logout</p>
+                            </a>
+                        </div>
                     </li>
                 </ul>
             </nav>

@@ -40,6 +40,10 @@ class LockerController extends AbstractController
 
         $totalLocker = $this->lockerService->getTotalLocker();
 
+        usort($lockers, function ($a, $b) {
+            return $b->getLikes() - $a->getLikes(); 
+        });      
+        
         foreach ($lockers as $l) {
             $banners = $this->itemService->getItemByTypeInLocker($l, 'PlayerCard');
             if(!empty($banners[0])){
@@ -48,6 +52,10 @@ class LockerController extends AbstractController
         } 
 
         $poduim = $this->lockerService->getLockerPoduim();
+        usort($poduim, function ($a, $b) {
+            return $b->getLikes() - $a->getLikes(); 
+        });      
+        
         foreach ($poduim as $l) {
             $banners = $this->itemService->getItemByTypeInLocker($l, 'PlayerCard');
             if(!empty($banners[0])){
@@ -103,6 +111,19 @@ class LockerController extends AbstractController
     }
 
 
+    #[Route('/locker/{id}/like', name: 'app_locker_like')]
+    public function like($id): Response{
+        
+        $locker = $this->lockerService->getLocker($id);
+        if(empty($locker) || !$locker->isPublic() || $this->lockerService->isMyLocker($locker) ){
+            return $this->redirectToRoute('app_home');        
+        }
+
+        $this->lockerService->likeLocker($locker);
+
+        return $this->redirectToRoute('app_locker', ['id' => $id]);        
+    }
+
     #[Route('/locker/{id}', name: 'app_locker')]
     public function index(Request $request, $id): Response
     {
@@ -113,6 +134,7 @@ class LockerController extends AbstractController
             return $this->redirectToRoute('app_home');        
         }
         
+        $isLiked = $this->lockerService->isLiked($locker);
         $weapons = $this->lockerService->getWeaponInLocker($locker);
         $form = $this->createForm(UpdateLocker::class, ['name' => $locker->getName()]);
         $form->handleRequest($request);
@@ -128,7 +150,8 @@ class LockerController extends AbstractController
             'locker' => $locker,
             'weapons' => $weapons,
             'isMyLocker' => $this->lockerService->isMyLocker($locker),
-            'updateForm' => $form
+            'updateForm' => $form,
+            'isLiked' => $isLiked
         ]);
     }
 
