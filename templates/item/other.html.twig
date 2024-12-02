@@ -9,6 +9,8 @@
             <p>PLAYER TITLE</p>
         {% elseif type == 'playerCard' %}
             <p>PLAYER CARD</p>
+        {% elseif type == 'spray' %}
+            <p>SPRAY</p>
         {% endif %}
     </h2>
 
@@ -16,18 +18,19 @@
         <div class="item-title">
             {% if type == 'playerTitle' %}
                 <img src="https://media.valorant-api.com/playercards/9fb348bc-41a0-91ad-8a3e-818035c4e561/largeart.png" alt="{{ item.displayName }}">
-            {% else %}
+            {% elseif type == 'playerCard' %}
                 <img src="{{ item.largeArt }}" alt="{{ item.displayName }}">
+            {% elseif type == 'spray' %}
+                <img src="{{ item.fullTransparentIcon }}" alt="{{ item.displayName }}">
             {% endif %}
             {% if type == 'playerTitle' %}
                 <div class="title-overlay">
                     <p>{{ item.displayName }}</p>
                 </div>
-            {% elseif type == 'playerCard' %}
+            {% elseif type == 'playerCard' or type == 'spray' %}
                 <div class="card-title">
                     <p>{{ item.displayName }}</p>
                 </div>
-
             {% endif %}
         </div>
     </div>
@@ -37,16 +40,20 @@
             <div>
                 {% if type == 'playerTitle' %}
                     <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'chromaId': 'playerTitle'}) }}">
-                {% else %}
+                {% elseif type == 'playerCard' %}
                     <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'chromaId': 'playerCard'}) }}">
+                {% elseif type == 'spray' %}
+                    <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'chromaId': 'spray'}) }}">
                 {% endif %}
                 <p>
                     <span class="bg"></span>
                     <span class="base"></span>
                     {% if type == 'playerTitle' %}
                         <span class="text">{{inMyLocker ? 'SEE IN MY LOCKER' : 'ADD TITLE'}}</span>
-                    {% else %}
+                    {% elseif type == 'playerCard' %}
                         <span class="text">{{inMyLocker ? 'SEE IN MY LOCKER' : 'ADD CARD'}}</span>
+                    {% elseif type == 'spray' %}
+                        <span class="text">{{inMyLocker ? 'SEE IN MY LOCKER' : 'ADD SPRAY'}}</span>
                     {% endif %}
                 </p>
             </a>
@@ -64,14 +71,23 @@
                 }) }}">
                     <img src="https://media.valorant-api.com/playercards/9fb348bc-41a0-91ad-8a3e-818035c4e561/largeart.png" alt="{{ recom.displayName }}">
                 </a>
-            </div>
-            {% else %}
-            <div class="item">
-                <a href="{{ path('app_item_other', {
+                </div>
+            {% elseif type == 'playerCard' %}
+                <div class="item">
+                    <a href="{{ path('app_item_other', {
                     'id': recom.uuid,
                     'type': 'playerCard'
                 }) }}">
                     <img src="{{ recom.largeArt }}" alt="{{ recom.displayName }}">
+                </a>
+            </div>
+            {% elseif type == 'spray' %}
+                <div class="item">
+                    <a href="{{ path('app_item_other', {
+                    'id': recom.uuid,
+                    'type': 'spray'
+                }) }}">
+                    <img src="{{ recom.fullTransparentIcon }}" alt="{{ recom.displayName }}">
                 </a>
             </div>
             {% endif %}

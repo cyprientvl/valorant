@@ -132,7 +132,8 @@ class ItemController extends AbstractController
 
         if (!empty($locker)) {
             foreach ($locker->getLockerItems() as $lockerItem) {
-                if ($lockerItem->getChroma()->getId() == $chromaId) {
+
+                if (!empty($lockerItem->getChroma()) && $lockerItem->getChroma()->getId() == $chromaId) {
                     $chromaIsInMyLocker = true;
                     $itemIdInMyLocker = $lockerItem->getId();
                 }

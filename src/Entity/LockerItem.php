@@ -14,52 +14,61 @@ class LockerItem
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: Locker::class)]
-    #[ORM\JoinColumn(nullable: false)] 
+    #[ORM\JoinColumn(nullable: false)]
     private ?Locker $locker;
 
     #[ORM\ManyToOne(targetEntity: Item::class)]
-    #[ORM\JoinColumn(nullable: false)] 
+    #[ORM\JoinColumn(nullable: false)]
     private ?Item $item;
 
     #[ORM\ManyToOne(targetEntity: Chroma::class)]
-    #[ORM\JoinColumn(nullable: true)] 
+    #[ORM\JoinColumn(nullable: true)]
     private ?Chroma $chroma;
 
     #[ORM\Column(type: 'boolean')]
     private bool $isMainItemType = false;
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
-    public function getLocker(): Locker{
+    public function getLocker(): Locker
+    {
         return $this->locker;
     }
 
-    public function getItem(): Item{
+    public function getItem(): Item
+    {
         return $this->item;
     }
 
-    public function getChroma(): Chroma{
+    public function getChroma()
+    {
         return $this->chroma;
     }
 
-    public function getIsMainItemType(): bool{
+    public function getIsMainItemType(): bool
+    {
         return $this->isMainItemType;
     }
 
-    public function setIsMainItemType(bool $new){
+    public function setIsMainItemType(bool $new)
+    {
         $this->isMainItemType = $new;
     }
 
-    public function setItem(Item $item){
+    public function setItem(Item $item)
+    {
         $this->item = $item;
     }
 
-    public function setLocker(Locker $locker){
+    public function setLocker(Locker $locker)
+    {
         $this->locker = $locker;
     }
 
-    public function setChroma(Chroma $c){
+    public function setChroma(Chroma $c)
+    {
         $this->chroma = $c;
     }
 

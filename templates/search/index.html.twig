@@ -84,7 +84,12 @@
                             </div>
                         {% elseif type == 'sprays' %}
                             <div class="item-spray">
-                                <img src="{{ item.fullTransparentIcon }}" alt="{{ item.displayName }}">
+                                <a style="z-index: 1;" href="{{ path('app_item_other', {
+                                    'id': item.uuid,
+                                    'type': 'spray'
+                                }) }}">
+                                    <img src="{{ item.fullTransparentIcon }}" alt="{{ item.displayName }}">
+                                </a>
                             </div>
                         {% endif %}
                     {% endfor %}
