@@ -61,8 +61,18 @@
                 <div class="locker-ligne">
                     <p class="title-ligne">Player Cards</p>
                     <div class="card">
-                        <img src="https://media.valorant-api.com/playercards/33c1f011-4eca-068c-9751-f68c788b2eee/largeart.png">
-                        <p>Imperatrice</p>
+                        {% if weapons['playerCard'] is defined %}
+                          <img  src="{{weapons['playerCard'][0].getItem().getDisplayIcon()}}">
+                        {% else %}
+                            <img src="https://media.valorant-api.com/playercards/33c1f011-4eca-068c-9751-f68c788b2eee/largeart.png">
+                        {% endif %}
+                        {% if weapons['playerTitle'] is defined %}
+                            <p>{{weapons['playerTitle'][0].getItem().getDisplayName()}}</p>
+                        {% else %}
+                            <p>Imperatrice</p>
+                        {% endif %}
+
+
                     </div>
                     <div class="sprays">
                         <p class="title-ligne">Sprays</p>
@@ -74,14 +84,7 @@
                             </div>
                             <p>my spray</p>
                         </div>
-                        <div class="container">
-                            <img>
-                            <div class="list-items">
-                                <div class="square"></div>
-                                <div class="square"></div>
-                            </div>
-                            <p>my spray</p>
-                        </div>
+                    
                         
                     </div>
                 </div>
