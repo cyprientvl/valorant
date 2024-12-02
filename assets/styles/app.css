@@ -1030,7 +1030,6 @@ footer .social a svg{
     background-color: #FF4655;
 }
 
-<<<<<<< HEAD
 .top-locker-main .top-locker-background{
   position: absolute;
   left: 0;
@@ -1252,7 +1251,6 @@ footer .social a svg{
   color: white;
   font-size: 20px;
 }
-=======
 
 /* CSS Register et Login */
 
@@ -1448,6 +1446,119 @@ footer .social a svg{
     user-select: none;
 }
 
+/* CSS Item autres que skins  */
+
+.main-title-detail{
+  width: 95%;
+  margin: auto;
+}
+
+.main-title-detail .title{
+  color: rgb(228, 230, 168);
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  text-transform: uppercase;
+}
+
+.main-title-detail .title p{
+  font-weight: 500;
+}
+
+.main-title-detail .choice{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 30px;
+}
+
+.main-title-detail .choice p{
+  padding: 2px 40px;
+  background-color: #46627f2f;
+  border-bottom: 5px solid #2c3f52;
+  cursor: pointer;
+}
+
+.main-title-detail .img-skin{
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.main-title-detail .img-skin img{
+    width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.main-title-detail-bg{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+}
+
+.main-title-detail .list-items{
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.488);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.main-title-detail .list-items .item{
+  height: 80px;
+  width: 80px;
+  border: 1px solid rgba(255, 255, 255, 0.488);
+  padding: 3px;
+  background-color: #2c3f5265;
+  position: relative;
+  cursor: pointer;
+}
+
+.main-title-detail .list-items .item img{
+  object-fit: cover;
+  height: 80px;
+  width: 80px;
+}
+
+.main-title-detail .list-items .item .lock{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.content-wrapper .locker-form {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+}
+
+.card-title {
+  position: relative;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.card-title p {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+
 /* Style pour les messages d'erreur du formulaire */
 .alert-danger {
     background-color: rgba(255, 70, 85, 0.9);
@@ -1475,4 +1586,3 @@ footer .social a svg{
     margin-top: 4px;
 }
 
->>>>>>> 101c6735224d81c0956455d039057df786744538

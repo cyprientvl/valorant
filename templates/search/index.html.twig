@@ -63,14 +63,24 @@
                             </div>
                         {% elseif type == 'titles' %}
                             <div class="item-title">
-                                <img src="https://media.valorant-api.com/playercards/9fb348bc-41a0-91ad-8a3e-818035c4e561/largeart.png" alt="{{ item.displayName }}">
-                                <div class="title-overlay">
-                                    <p>{{ item.displayName }}</p>
-                                </div>
+                                <a href="{{ path('app_item_other', {
+                                    'id': item.uuid,
+                                    'type': 'playerTitle'
+                                }) }}">
+                                    <img src="https://media.valorant-api.com/playercards/9fb348bc-41a0-91ad-8a3e-818035c4e561/largeart.png" alt="{{ item.displayName }}">
+                                    <div class="title-overlay">
+                                        <p>{{ item.displayName }}</p>
+                                    </div>
+                                </a>
                             </div>
                         {% elseif type == 'cards' %}
                             <div class="item-card">
-                                <img src="{{ item.largeArt }}" alt="{{ item.displayName }}">
+                                <a href="{{ path('app_item_other', {
+                                    'id': item.uuid,
+                                    'type': 'playerCard'
+                                }) }}">
+                                    <img src="{{ item.largeArt }}" alt="{{ item.displayName }}">
+                                </a>
                             </div>
                         {% elseif type == 'sprays' %}
                             <div class="item-spray">

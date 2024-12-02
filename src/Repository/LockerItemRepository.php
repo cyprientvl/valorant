@@ -16,25 +16,29 @@ class LockerItemRepository extends ServiceEntityRepository
         parent::__construct($registry, LockerItem::class);
     }
 
-    public function add($lockerItem){
+    public function add($lockerItem)
+    {
         $entityManager = $this->getEntityManager();
         $entityManager->persist($lockerItem);
-        $entityManager->flush();   
+        $entityManager->flush();
     }
 
-    public function update($lockerItem){
+    public function update($lockerItem)
+    {
         $entityManager = $this->getEntityManager();
         $entityManager->persist($lockerItem);
-        $entityManager->flush();   
+        $entityManager->flush();
     }
 
-    public function remove($lockerItem){
+    public function remove($lockerItem)
+    {
         $entityManager = $this->getEntityManager();
         $entityManager->remove($lockerItem);
         $entityManager->flush();
     }
 
-    public function get($lockerItemId){
+    public function get($lockerItemId)
+    {
         return $this->createQueryBuilder('l')
             ->join('l.chroma', 'c')
             ->andWhere('l.id = :val')
@@ -44,7 +48,16 @@ class LockerItemRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
-//    /**
+    public function getByItemId($itemId)
+    {
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.item = :val')
+            ->setParameter('val', $itemId)
+            ->getQuery()
+            ->getResult();
+    }
+
+    //    /**
 //     * @return LockerItem[] Returns an array of LockerItem objects
 //     */
 //    public function findByExampleField($value): array
@@ -59,7 +72,7 @@ class LockerItemRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?LockerItem
+    //    public function findOneBySomeField($value): ?LockerItem
 //    {
 //        return $this->createQueryBuilder('l')
 //            ->andWhere('l.exampleField = :val')

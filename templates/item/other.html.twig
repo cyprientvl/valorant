@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ItemController!{% endblock %}
+
+{% block body %}
+<main class="main-title-detail">
+    <h2 class="title">
+        {% if type == 'playerTitle' %}
+            <p>PLAYER TITLE</p>
+        {% elseif type == 'playerCard' %}
+            <p>PLAYER CARD</p>
+        {% endif %}
+    </h2>
+
+    <div class="img-skin">
+        <div class="item-title">
+            {% if type == 'playerTitle' %}
+                <img src="https://media.valorant-api.com/playercards/9fb348bc-41a0-91ad-8a3e-818035c4e561/largeart.png" alt="{{ item.displayName }}">
+            {% else %}
+                <img src="{{ item.largeArt }}" alt="{{ item.displayName }}">
+            {% endif %}
+            {% if type == 'playerTitle' %}
+                <div class="title-overlay">
+                    <p>{{ item.displayName }}</p>
+                </div>
+            {% elseif type == 'playerCard' %}
+                <div class="card-title">
+                    <p>{{ item.displayName }}</p>
+                </div>
+
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="locker-form">
+            <div>
+                {% if type == 'playerTitle' %}
+                    <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'chromaId': 'playerTitle'}) }}">
+                {% else %}
+                    <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'chromaId': 'playerCard'}) }}">
+                {% endif %}
+                <p>
+                    <span class="bg"></span>
+                    <span class="base"></span>
+                    {% if type == 'playerTitle' %}
+                        <span class="text">{{inMyLocker ? 'SEE IN MY LOCKER' : 'ADD TITLE'}}</span>
+                    {% else %}
+                        <span class="text">{{inMyLocker ? 'SEE IN MY LOCKER' : 'ADD CARD'}}</span>
+                    {% endif %}
+                </p>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="list-items">
+        {% for recom in recomendation %}
+            {% if type == 'playerTitle' %}
+            <div class="item">
+                <a href="{{ path('app_item_other', {
+                    'id': recom.uuid,
+                    'type': 'playerTitle'
+                }) }}">
+                    <img src="https://media.valorant-api.com/playercards/9fb348bc-41a0-91ad-8a3e-818035c4e561/largeart.png" alt="{{ recom.displayName }}">
+                </a>
+            </div>
+            {% else %}
+            <div class="item">
+                <a href="{{ path('app_item_other', {
+                    'id': recom.uuid,
+                    'type': 'playerCard'
+                }) }}">
+                    <img src="{{ recom.largeArt }}" alt="{{ recom.displayName }}">
+                </a>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</main>
+
+<img src="https://trackercdn.com/cdn/tracker.gg/premium/pattern-poly.png?v=2" alt="" class="main-title-detail-bg">
+{% endblock %}
