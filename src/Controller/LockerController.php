@@ -10,13 +10,16 @@ use App\Form\CreateLocker;
 use App\Form\SearchLocker;
 use App\Form\UpdateLocker;
 use App\Service\ItemService;
+use App\Service\LikeService;
+
 use Symfony\Component\HttpFoundation\Request; 
 
 class LockerController extends AbstractController
 {
 
     public function __construct(private LockerService $lockerService,
-    private ItemService $itemService){
+    private ItemService $itemService,
+    private LikeService $likeService){
     }
 
     #[Route('/top-locker', name: 'app_locker_top')]
@@ -40,16 +43,24 @@ class LockerController extends AbstractController
 
         $totalLocker = $this->lockerService->getTotalLocker();
 
+        usort($lockers, function ($a, $b) {
+            return $b->getLikes() - $a->getLikes(); 
+        });      
+        
         foreach ($lockers as $l) {
-            $banners = $this->itemService->getItemByTypeInLocker($l, 'PlayerCard');
+            $banners = $this->itemService->getItemByTypeInLocker($l, 'playerCard');
             if(!empty($banners[0])){
                 $l->banner = $banners[0]->getItem()->getDisplayIcon();
             }
         } 
 
         $poduim = $this->lockerService->getLockerPoduim();
+        usort($poduim, function ($a, $b) {
+            return $b->getLikes() - $a->getLikes(); 
+        });      
+        
         foreach ($poduim as $l) {
-            $banners = $this->itemService->getItemByTypeInLocker($l, 'PlayerCard');
+            $banners = $this->itemService->getItemByTypeInLocker($l, 'playerCard');
             if(!empty($banners[0])){
                 $l->banner = $banners[0]->getItem()->getDisplayIcon();
             }
@@ -94,6 +105,10 @@ class LockerController extends AbstractController
 
         $locker = $this->lockerService->getMyLocker();
 
+        if(empty($locker)){
+            return $this->redirectToRoute('app_locker_create');        
+        }
+
         if(intval($id) != $locker->getId()){
             return $this->redirectToRoute('app_home');       
         }
@@ -102,6 +117,8 @@ class LockerController extends AbstractController
         return $this->redirectToRoute('app_locker', ['id' => $id]);        
     }
 
+
+    
 
     #[Route('/locker/{id}', name: 'app_locker')]
     public function index(Request $request, $id): Response
@@ -113,6 +130,7 @@ class LockerController extends AbstractController
             return $this->redirectToRoute('app_home');        
         }
         
+        $isLiked = $this->likeService->isLiked($locker);
         $weapons = $this->lockerService->getWeaponInLocker($locker);
         $form = $this->createForm(UpdateLocker::class, ['name' => $locker->getName()]);
         $form->handleRequest($request);
@@ -128,7 +146,8 @@ class LockerController extends AbstractController
             'locker' => $locker,
             'weapons' => $weapons,
             'isMyLocker' => $this->lockerService->isMyLocker($locker),
-            'updateForm' => $form
+            'updateForm' => $form,
+            'isLiked' => $isLiked
         ]);
     }
 

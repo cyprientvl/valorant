@@ -21,8 +21,6 @@ class Locker
     #[ORM\Column(type: 'boolean')]
     private bool $isPublic;
 
-    #[ORM\Column(type: 'integer')]
-    private int $likes;
 
     /**
      * @var Collection<int, Item>
@@ -33,12 +31,17 @@ class Locker
     #[ORM\OneToOne(targetEntity: User::class)]
     private User $user;
 
-    public function __construct(string $name, bool $isPublic, int $likes = 0)
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: "likedLockers")]
+    #[ORM\JoinTable(name: 'locker_user_likes')] 
+    private Collection $userLikes;
+
+    public function __construct(string $name, bool $isPublic)
     {
         $this->name = $name;
         $this->isPublic = $isPublic;
-        $this->likes = $likes;
         $this->lockerItems = new ArrayCollection();
+        $this->userLikes = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -64,21 +67,6 @@ class Locker
     public function setIsPublic(bool $isPublic): void
     {
         $this->isPublic = $isPublic;
-    }
-
-    public function getLikes(): int
-    {
-        return $this->likes;
-    }
-
-    public function setLikes(int $likes): void
-    {
-        $this->likes = $likes;
-    }
-
-    public function incrementLikes(): void
-    {
-        $this->likes++;
     }
 
     /**
@@ -112,12 +100,10 @@ class Locker
 
     public function setUser(?User $user): static
     {
-        // unset the owning side of the relation if necessary
         if ($user === null && $this->user !== null) {
             $this->user->setLocker(null);
         }
 
-        // set the owning side of the relation if necessary
         if ($user !== null && $user->getLocker() !== $this) {
             $user->setLocker($this);
         }
@@ -127,4 +113,21 @@ class Locker
         return $this;
     }
 
+    public function addLikes($user){
+        if (!$this->userLikes->contains($user)) {
+            $this->userLikes->add($user);
+        }else{
+            $this->userLikes->removeElement($user);
+        }
+
+        return $this;
+    }
+
+    public function getLikes(){
+        return $this->userLikes->count();
+    }
+
+    public function isLiked($user){
+        return $this->userLikes->contains($user);
+    }
 }

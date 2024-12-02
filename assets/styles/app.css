@@ -1586,3 +1586,7 @@ footer .social a svg{
     margin-top: 4px;
 }
 
+.thumb-like img{
+  width: 30px;
+  transform: translateY(10px);
+}

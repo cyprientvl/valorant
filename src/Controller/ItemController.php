@@ -115,6 +115,13 @@ class ItemController extends AbstractController
         if (empty($item)) {
             return $this->redirectToRoute('app_home');
         }
+
+        $locker = $this->lockerService->getMyLocker();
+
+        if(empty($locker)){
+            return $this->redirectToRoute('app_locker_create');        
+        }
+
         $type = $this->itemService->getWeaponType($item['data']['displayName']);
         $chroma = null;
         foreach ($item['data']['chromas'] as $ch) {

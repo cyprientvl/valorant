@@ -30,7 +30,6 @@ class LockerRepository extends ServiceEntityRepository
                 )
         )
         ->setParameter('search', $search)
-        ->orderBy('l.likes', 'DESC') 
         ->setMaxResults(50)
         ->getQuery()
         ->getResult();
@@ -72,7 +71,6 @@ class LockerRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('l')
             ->join('l.user', 'u')
             ->andWhere('l.isPublic = 1')
-            ->orderBy('l.likes', 'DESC') 
             ->setMaxResults(50)
             ->getQuery()
             ->getResult();
@@ -89,7 +87,6 @@ class LockerRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('l')
             ->join('l.user', 'u')
             ->andWhere('l.isPublic = 1')
-            ->orderBy('l.likes', 'DESC') 
             ->setMaxResults(3)
             ->getQuery()
             ->getResult();
