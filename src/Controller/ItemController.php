@@ -47,8 +47,16 @@ class ItemController extends AbstractController
         $itemInDb = $this->itemService->getItemInBd($id);
 
         if (empty($itemInDb)) {
-            $displayIcon = $item['displayIcon'] ?? "";
+
+            $keyIconName = "displayIcon";
+
+            if($chromaId == 'playerCard'){
+                $keyIconName = "largeArt";
+            }
+
+            $displayIcon = $item[$keyIconName] ?? "";
             $itemType = $this->itemService->getWeaponType($item['displayName']);
+
             if ($isOther) {
                 $itemType = $chromaId;
             }
@@ -91,7 +99,12 @@ class ItemController extends AbstractController
             $inMyLocker = true;
         }
 
-        $lockerId = $this->lockerService->getMyLocker()->getId();
+        $locker = $this->lockerService->getMyLocker();
+        if(empty($locker)){
+            return $this->redirectToRoute('app_locker_create');        
+        }
+
+        $lockerId = $locker->getId();
 
 
         return $this->render('item/other.html.twig', [

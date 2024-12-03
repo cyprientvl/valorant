@@ -4,8 +4,32 @@
 
 {% block body %}
 
-{% for locker in lockers  %}
-        <p>{{locker.getName()}}</p>
-{% endfor %}
+<main class="like-content">
+
+        <div class="like-top-info">
+            <img src="https://trackercdn.com/cdn/tracker.gg/valorant/images/esports/tournament-header.png">
+            <h1>Valorant Esports Match Schedule: Upcoming Games & Live Results</h1>
+        </div>
+
+        <div class="top-locker-result">
+                {% for locker in lockers  %}
+                <a class="ligne" href="/locker/{{locker.getId()}}">
+                        <div class="left">
+                                <p class="rank">{{loop.index}}</p>
+                                {% if locker.banner is defined %}
+                                     <img src="{{locker.banner}}">
+                                {% else %}
+                                     <img src="https://media.valorant-api.com/playercards/1711d20d-4b1c-c64a-14be-d4ae58a457c6/largeart.png">
+                                {% endif %}
+                                <p class="username">{{locker.getName()}}</p>
+                        </div>
+                        <p class="likes">{{locker.getLikes()}}</p>
+                </a>
+                {% endfor %}
+        </div>
+
+    </main>
+
+
 
 {% endblock %}

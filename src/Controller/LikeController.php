@@ -25,6 +25,7 @@ class LikeController extends AbstractController
         
         
         $lockers = $this->likeService->getUserLockerLike();
+            
         
         foreach ($lockers as $l) {
             $banners = $this->itemService->getItemByTypeInLocker($l, 'playerCard');
@@ -32,7 +33,6 @@ class LikeController extends AbstractController
                 $l->banner = $banners[0]->getItem()->getDisplayIcon();
             }
         }
-
         return $this->render('like/index.html.twig', [
             'controller_name' => 'LockerController',
             'lockers' => $lockers
