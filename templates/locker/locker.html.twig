@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LockerController!{% endblock %}
+{% block title %}Locker{% endblock %}
 
 {% block body %}
 
@@ -13,7 +13,7 @@
                 <div class="locker-form">
                     {{ form_start(updateForm) }}
                         <div style="width: 300px">
-                            <label>Locker name:</label>
+                            <label>Nom du casier:</label>
                             {{ form_row(updateForm.name) }}
 
                             <button type="submit" style="margin-top: 10px; background-color: #ff4655; color: white; border: none; padding: 2px 10px; border-radius: 5px;">
@@ -38,7 +38,7 @@
             {% else %}
                 <div class="locker-form">
                     <form>
-                        <label>Locker name:</label>
+                        <label>Nom du casier:</label>
                         <input type="text" value="{{locker.getName()}}" class="locker-name">
 
                         <a href="/locker/{{locker.id}}/like" class="thumb-like">
@@ -58,7 +58,7 @@
             
             <div class="locker-content">
                 <div class="locker-ligne">
-                    <p class="title-ligne">Player Cards</p>
+                    <p class="title-ligne">Carte du joueur</p>
                     <div class="card">
                         {% if weapons['playerCard'] is defined %}
                         <a href="/locker/{{locker.id}}/other/{{weapons['playerCard'][0].getId()}}">

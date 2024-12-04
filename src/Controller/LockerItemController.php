@@ -30,13 +30,13 @@ class LockerItemController extends AbstractController
             return $this->redirectToRoute('app_home');        
         }
 
-        $item = $this->itemService->getItemByIdInLocker($locker, $itemId);
+        $item = $this->lockerItemService->getLockerItemByIdInLocker($locker, $itemId);
 
         if(empty($item)){
             return $this->redirectToRoute('app_home');        
         }
         
-        $allItem = $this->itemService->getItemByTypeInLocker($locker, $item->getItem()->getItemType());
+        $allItem = $this->lockerItemService->getLockerItemByTypeInLocker($locker, $item->getItem()->getItemType());
         
         $formUpdate = $this->createForm(LockerItemForm::class, ['name' => $locker->getName()]);
         $formUpdate->handleRequest($request);
@@ -70,12 +70,12 @@ class LockerItemController extends AbstractController
             return $this->redirectToRoute('app_home');        
         }
 
-        $item = $this->itemService->getItemByIdInLocker($locker, $itemId);
+        $item = $this->lockerItemService->getLockerItemByIdInLocker($locker, $itemId);
 
         if(empty($item)){
             return $this->redirectToRoute('app_home');        
         }
-        $allItem = $this->itemService->getItemByTypeInLocker($locker, $item->getItem()->getItemType());
+        $allItem = $this->lockerItemService->getLockerItemByTypeInLocker($locker, $item->getItem()->getItemType());
         $formUpdate = $this->createForm(LockerItemForm::class, ['name' => $locker->getName()]);
         $formUpdate->handleRequest($request);
 

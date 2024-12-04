@@ -9,12 +9,14 @@ use Symfony\Component\Routing\Attribute\Route;
 use App\Service\LikeService;
 use App\Service\LockerService;
 use App\Service\ItemService;
+use App\Service\LockerItemService;
 
 class LikeController extends AbstractController
 {
 
     public function __construct(private ValorantApi $valorantApi, 
     private LockerService $lockerService,
+    private LockerItemService $lockerItemService,
     private ItemService $itemService,
     private LikeService $likeService)
     {
@@ -23,16 +25,10 @@ class LikeController extends AbstractController
     #[Route('/like', name: 'app_like_index')]
     public function index(): Response{
         
-        
         $lockers = $this->likeService->getUserLockerLike();
-            
+
+        $lockers = $this->lockerService->setLockerBanner($lockers);    
         
-        foreach ($lockers as $l) {
-            $banners = $this->itemService->getItemByTypeInLocker($l, 'playerCard');
-            if(!empty($banners[0])){
-                $l->banner = $banners[0]->getItem()->getDisplayIcon();
-            }
-        }
         return $this->render('like/index.html.twig', [
             'controller_name' => 'LockerController',
             'lockers' => $lockers
@@ -43,6 +39,7 @@ class LikeController extends AbstractController
     public function like($id): Response{
         
         $locker = $this->lockerService->getLocker($id);
+        
         if(empty($locker) || !$locker->isPublic() || $this->lockerService->isMyLocker($locker) ){
             return $this->redirectToRoute('app_home');        
         }

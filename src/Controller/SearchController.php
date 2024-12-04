@@ -12,8 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SearchController extends AbstractController
 {
     public function __construct(private ValorantApi $valorantApi)
-    {
-    }
+    {}
 
     #[Route('/search', name: 'app_search')]
     public function index(Request $request): Response

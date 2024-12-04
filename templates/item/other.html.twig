@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ItemController!{% endblock %}
+{% block title %}Other{% endblock %}
 
 {% block body %}
 <main class="main-title-detail">
     <h2 class="title">
         {% if type == 'playerTitle' %}
-            <p>PLAYER TITLE</p>
+            <p>TITRE DE JOUEUR</p>
         {% elseif type == 'playerCard' %}
-            <p>PLAYER CARD</p>
+            <p>CARTE DE JOUEUR</p>
         {% elseif type == 'spray' %}
             <p>SPRAY</p>
         {% endif %}
