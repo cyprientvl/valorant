@@ -94,7 +94,7 @@ class ValorantApi
 
         if ($isHome) {
             $homeBundles = [];
-            for ($i = 0; $i < 1; $i++) {
+            for ($i = 0; $i < 3; $i++) {
                 $homeBundles[] = $bundles['data'][rand(0, count($bundles['data']) - 1)];
             }
             return $homeBundles;

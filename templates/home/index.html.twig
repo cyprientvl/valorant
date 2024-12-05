@@ -3,18 +3,43 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="home">
+    <div class="home-hero">
+        <img class="home-hero-bg" src="https://wallpapers.com/images/featured/valorant-305kescxw5dpup7y.jpg" alt="Valorant background">
+        
+        <div class="home-hero-content">
+            <div class="home-hero-title">
+                <p class="subtitle">La possibilité de personnaliser son casier à l'infini</p>
+                <img src="https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/7b76209193f1bfe190d3ae6ef8728328870be9c3-736x138.png?auto=format&fit=fill&q=80&w=375" alt="VALORANT">
+            </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            <div class="button-box">
+                <div class="button-mask button-mask-slide">
+                    <span>Créer ton Locker</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/raphm/OneDrive/Documents/valorant/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/raphm/OneDrive/Documents/valorant/templates/home/index.html.twig</code></li>
-    </ul>
+    <div class="bundles_container">
+        <div class="bundles_content">
+            <h2>Nos derniers bundles</h2>
+            <div class="bundles_grid">
+                {% for bundle in bundles %}
+                    <div class="bundle_item">
+                        <img src="{{ bundle.displayIcon }}" alt="{{ bundle.displayName }}">
+                        <div class="bundle_info">
+                            <h3>{{ bundle.displayName }}</h3>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="home-content">
+        <h1>Gros caca</h1>
+    </div>
+
 </div>
 {% endblock %}
