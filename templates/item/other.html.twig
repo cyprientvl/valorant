@@ -39,11 +39,11 @@
         <div class="locker-form">
             <div>
                 {% if type == 'playerTitle' %}
-                    <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'chromaId': 'playerTitle'}) }}">
+                    <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'data': 'playerTitle'}) }}">
                 {% elseif type == 'playerCard' %}
-                    <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'chromaId': 'playerCard'}) }}">
+                    <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'data': 'playerCard'}) }}">
                 {% elseif type == 'spray' %}
-                    <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'chromaId': 'spray'}) }}">
+                    <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'data': 'spray'}) }}">
                 {% endif %}
                 <p>
                     <span class="bg"></span>
