@@ -50,6 +50,9 @@ class ValorantApi
         for ($i = 0; $i < count($data['data']); $i++) {
             if (strpos(strtolower($data['data'][$i][$param]), $query) !== false) {
                 $items[] = $data['data'][$i];
+                if (count($items) >= 20) {
+                    break;
+                }
             }
         }
 
