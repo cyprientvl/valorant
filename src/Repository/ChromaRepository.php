@@ -16,7 +16,6 @@ class ChromaRepository extends ServiceEntityRepository
         parent::__construct($registry, Chroma::class);
     }
 
-
     public function add($chroma, $itemInDb){
         $entityManager = $this->getEntityManager();
         $entityManager->persist($chroma);
@@ -24,28 +23,4 @@ class ChromaRepository extends ServiceEntityRepository
         $entityManager->refresh($itemInDb);
     }
 
-//    /**
-//     * @return Chroma[] Returns an array of Chroma objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Chroma
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

@@ -2,16 +2,10 @@
 
 namespace App\Service;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Repository\LockerRepository;
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Bundle\SecurityBundle\Security;
 
 class LikeService
@@ -23,7 +17,6 @@ class LikeService
         private RequestStack $requestStack,
         private LockerRepository $lockerRepository,
         private UserRepository $userRepository,
-
         private Security $security
     ) {
 
@@ -46,10 +39,6 @@ class LikeService
         $user = $this->security->getUser();  
         if(empty($user)) return;
         return $user->getLikedLockers();
-        //return $this->userRepository->getUserLockerLike($user->getId());
     }
-
-    
-
 
 }

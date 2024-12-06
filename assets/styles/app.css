@@ -456,7 +456,7 @@ footer .social a svg{
     width: 50%;
   }
 
-  .main-weapon-detail .skin-title{
+  .skin-title{
     color: white;
     font-size: 30px;
     text-align: center;
@@ -1740,3 +1740,33 @@ footer .social a svg{
 }
 
 
+
+.like-content .top-locker-result{
+  margin-top: 50px;
+}
+
+.like-top-info{
+  width: 90%;
+  position: relative;
+  height: 300px;
+  margin: auto;
+  background-color: #1b2733;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.like-top-info img{
+  position: absolute;
+  height: 100%; 
+  width: 100%;
+  object-fit: cover;
+}
+
+.like-top-info h1{
+  color: white;
+  text-align: center;
+  
+}

@@ -8,7 +8,6 @@ use App\Repository\LockerRepository;
 use App\Repository\ItemRepository;
 
 use Symfony\Bundle\SecurityBundle\Security;
-use App\Entity\Locker;
 use App\Entity\Item;
 
 use App\Service\ValorantApi;
@@ -24,11 +23,7 @@ class ItemService
         private ValorantApi $valorantApi,
         private Security $security,
         private ItemRepository $itemRepository
-    ) {
-
-    }
-
-
+    ) {}
 
     public function addItem($id, $display_name, $item_type, $display_icon)
     {
@@ -41,8 +36,6 @@ class ItemService
         $this->itemRepository->add($item);
     }
 
-
-
     public function getItem($id, $type)
     {
         $item = $this->valorantApi->get($this->getUrlByItemType($type) . $id);
@@ -52,32 +45,6 @@ class ItemService
     public function getItemInBd($id)
     {
         return $this->itemRepository->getItem($id);
-    }
-
-    public function getItemByIdInLocker(Locker $locker, $itemId)
-    {
-        $items = $locker->getLockerItems();
-        foreach ($items as $item) {
-
-            if ($item->getId() === intval($itemId)) {
-                return $item;
-            }
-        }
-    }
-
-    public function getItemByTypeInLocker(Locker $locker, $type)
-    {
-
-        $returns = [];
-        $items = $locker->getLockerItems();
-
-        foreach ($items as $item) {
-            if ($item->getItem()->getItemType() === $type) {
-                array_push($returns, $item);
-            }
-        }
-
-        return $returns;
     }
 
     public function getWeaponType($name)
@@ -138,7 +105,6 @@ class ItemService
     public function isSpray($type)
     {
         return $type == 'spray';
-
     }
 
     public function isPlayerTitle($type)

@@ -2,10 +2,7 @@
 
 namespace App\Service;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpClient\HttpClient;
+use App\Entity\Locker;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Entity\LockerItem;
@@ -49,6 +46,32 @@ class LockerItemService
     public function updateLockerItemMainType($lockerItem){
         $lockerItem->setIsMainItemType(!$lockerItem->getIsMainItemType());
         $this->lockerItemRepository->update($lockerItem);
+    }
+
+    public function getLockerItemByIdInLocker(Locker $locker, $itemId)
+    {
+        $items = $locker->getLockerItems();
+        foreach ($items as $item) {
+
+            if ($item->getId() === intval($itemId)) {
+                return $item;
+            }
+        }
+    }
+
+    public function getLockerItemByTypeInLocker(Locker $locker, $type)
+    {
+
+        $returns = [];
+        $items = $locker->getLockerItems();
+
+        foreach ($items as $item) {
+            if ($item->getItem()->getItemType() === $type) {
+                array_push($returns, $item);
+            }
+        }
+
+        return $returns;
     }
 
 

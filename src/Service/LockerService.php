@@ -2,10 +2,6 @@
 
 namespace App\Service;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use App\Repository\LockerRepository;
@@ -14,15 +10,12 @@ use App\Entity\Locker;
 
 class LockerService{
 
-    private $baseUrl = "https://valorant-api.com/v1/";
-
     public function __construct(
         private HttpClientInterface $client,  
         private RequestStack $requestStack,
         private LockerRepository $lockerRepository,
-        private Security $security){
-
-        }
+        private LockerItemService $lockerItemService,
+        private Security $security){}
 
     public function getLocker($id){
 
@@ -37,7 +30,6 @@ class LockerService{
     }
 
     public function getMyLocker(){
-        $user = $this->security->getUser();
         $locker = $this->lockerRepository->getMyLocker();
         return $locker;
     }
@@ -100,5 +92,15 @@ class LockerService{
         return $this->lockerRepository->getLockerPoduim();
     }
 
+    public function setLockerBanner($lockers){
+        foreach ($lockers as $l) {
+            $banners = $this->lockerItemService->getLockerItemByTypeInLocker($l, 'playerCard');
+            if(!empty($banners[0])){
+                $l->banner = $banners[0]->getItem()->getDisplayIcon();
+            }
+        }
+
+        return $lockers;
+    }
   
 }

@@ -19,6 +19,46 @@ class LockerItemController extends AbstractController
     private LockerItemService $lockerItemService,
     private ValorantApi $valorantApi){
     }
+
+    #[Route('/locker/{id}/other/{itemId}', name: 'app_locker_item_other')]
+    public function other(Request $request, $id, $itemId): Response
+    {
+
+        $locker = $this->lockerService->getLocker($id);
+
+        if(empty($locker) || (!$locker->isPublic() && !$this->lockerService->isMyLocker($locker))){
+            return $this->redirectToRoute('app_home');        
+        }
+
+        $item = $this->lockerItemService->getLockerItemByIdInLocker($locker, $itemId);
+
+        if(empty($item)){
+            return $this->redirectToRoute('app_home');        
+        }
+        
+        $allItem = $this->lockerItemService->getLockerItemByTypeInLocker($locker, $item->getItem()->getItemType());
+        
+        $formUpdate = $this->createForm(LockerItemForm::class, ['name' => $locker->getName()]);
+        $formUpdate->handleRequest($request);
+
+        if ($formUpdate->isSubmitted() && $formUpdate->isValid()) {
+
+            $this->lockerItemService->updateLockerItemMainType($item);
+
+            return $this->redirectToRoute('app_locker_item_other', ['id' => $id, 'itemId' => $itemId]);        
+        }
+
+        return $this->render('locker_item/other.html.twig', [
+            'controller_name' => 'LockerItemController',
+            'item' => $item,
+            'type' => $item->getItem()->getItemType(),
+            'allItem' => $allItem,
+            'lockerId' => $id,
+            'lockerItemId' => $itemId,
+            'isMyLocker' => $this->lockerService->isMyLocker($locker),
+            'formUpdate' => $formUpdate,
+        ]);
+    }
     
     #[Route('/locker/{id}/{itemId}', name: 'app_locker_item')]
     public function index(Request $request, $id, $itemId): Response
@@ -30,12 +70,12 @@ class LockerItemController extends AbstractController
             return $this->redirectToRoute('app_home');        
         }
 
-        $item = $this->itemService->getItemByIdInLocker($locker, $itemId);
+        $item = $this->lockerItemService->getLockerItemByIdInLocker($locker, $itemId);
 
         if(empty($item)){
             return $this->redirectToRoute('app_home');        
         }
-        $allItem = $this->itemService->getItemByTypeInLocker($locker, $item->getItem()->getItemType());
+        $allItem = $this->lockerItemService->getLockerItemByTypeInLocker($locker, $item->getItem()->getItemType());
         $formUpdate = $this->createForm(LockerItemForm::class, ['name' => $locker->getName()]);
         $formUpdate->handleRequest($request);
 

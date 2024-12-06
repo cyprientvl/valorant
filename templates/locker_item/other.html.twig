@@ -1,17 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Locker item{% endblock %}
+{% block title %}Locker item other{% endblock %}
 
 {% block body %}
-<main class="main-weapon-detail">
+<main class="main-title-detail">
+    <h2 class="title">
+        {% if type == 'playerTitle' %}
+            <p>TITRE DE JOUEUR</p>
+        {% elseif type == 'playerCard' %}
+            <p>CARTE DE JOUEUR</p>
+        {% elseif type == 'spray' %}
+            <p>SPRAY</p>
+        {% endif %}
+    </h2>
 
-        <img class="main-weapon-detail-bg" src="https://trackercdn.com/cdn/tracker.gg/premium/pattern-poly.png?v=2">
+   
 
-        <div class="title">
-            <p>{{item.getItem().getItemType()}}</p>
-        </div>
-
-        <div class="choice" style="gap: 30px; align-items: center;">
+     <div class="choice" style="gap: 30px; align-items: center;">
             <p>SKINS</p>
             {% if isMyLocker  %}
 
@@ -28,30 +33,21 @@
                         </div>
                     </button>
                 {{ form_end(formUpdate) }}
-            {% else %}
-                <p>Autre</p>
-            {% endif %}   
-            
-        </div>
-
-        <div class="img-skin">
-            <img src="{{item.getChroma().getDisplayIcon()}}">
-        </div>
-
-        <div class="skin-bottom">
-            <div class="chromas">
-            
-                {% for ch in item.getItem().getChromas()  %}
-                    <a class="chroma" href="/item/{{item.getItem().getId()}}/{{ch.getId()}}">
-                        <img src="{{ch.getDisplayIcon()}}" >
-                    </a>
-                {% endfor %}
+            {% endif %}
                 
-            </div>
+            
+        </div>
+    
+    <div class="img-skin">
+        <img src="{{item.getItem().getDisplayIcon()}}" style="max-width: 250px">
+    </div>
 
-            <p class="skin-title">{{item.getChroma().getDisplayName()}}</p>
+    <div class="skin-bottom">
+           
+
+            <p class="skin-title">{{item.getItem().getDisplayName()}}</p>
             {% if isMyLocker  %}
-                <div class="locker-form">
+                <div class="locker-form" style="justify-content: end">
                     <div>
                         <a href="/locker/{{lockerId}}/delete/{{lockerItemId}}">
                         <p>
@@ -69,14 +65,19 @@
             
         </div>
         
-        <div class="list-items">
-            {% for i in allItem  %}
-                <a class="item" href="/locker/{{lockerId}}/{{i.getId()}}">
-                    <img src="{{i.getChroma().getDisplayIcon()}}">
-                </a>
-            {% endfor %}
-           
-        </div>
+        {% if type != 'playerTitle' %}
+            <div class="list-items">
+                {% for i in allItem  %}
+                    <a class="item" href="/locker/{{lockerId}}/{{i.getId()}}">
+                        <img src="{{i.getItem().getDisplayIcon()}}">
+                    </a>
+                {% endfor %}
+            
+            </div>
+        {% endif %}
+        
+    
+</main>
 
-    </main>
+<img src="https://trackercdn.com/cdn/tracker.gg/premium/pattern-poly.png?v=2" alt="" class="main-title-detail-bg">
 {% endblock %}
