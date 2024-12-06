@@ -35,8 +35,8 @@
         </div>
     </div>
 
-    <div class="content-wrapper">
-        <div class="locker-form">
+    <div class="skin-bottom">
+        <div class="locker-form" style="justify-content: end">
             <div>
                 {% if type == 'playerTitle' %}
                     <a href="{{inMyLocker ? path('app_locker_item', {'id': lockerId,'itemId': item.uuid}) : path('app_item_create', {'id': item.uuid,'data': 'playerTitle'}) }}">
@@ -49,17 +49,16 @@
                     <span class="bg"></span>
                     <span class="base"></span>
                     {% if type == 'playerTitle' %}
-                        <span class="text">{{inMyLocker ? 'SEE IN MY LOCKER' : 'ADD TITLE'}}</span>
+                        <span class="text">{{inMyLocker ? 'VOIR DANS SON CASIER' : 'AJOUTER LE TITRE'}}</span>
                     {% elseif type == 'playerCard' %}
-                        <span class="text">{{inMyLocker ? 'SEE IN MY LOCKER' : 'ADD CARD'}}</span>
+                        <span class="text">{{inMyLocker ? 'VOIR DANS SON CASIER' : 'AJOUTER LA CARTE'}}</span>
                     {% elseif type == 'spray' %}
-                        <span class="text">{{inMyLocker ? 'SEE IN MY LOCKER' : 'ADD SPRAY'}}</span>
+                        <span class="text">{{inMyLocker ? 'VOIR DANS SON CASIER' : 'AJOUTER LE SPRAY'}}</span>
                     {% endif %}
                 </p>
             </a>
         </div>
     </div>
-
 
     <div class="list-items">
         {% for recom in recomendation %}
@@ -93,6 +92,7 @@
             {% endif %}
         {% endfor %}
     </div>
+
 </main>
 
 <img src="https://trackercdn.com/cdn/tracker.gg/premium/pattern-poly.png?v=2" alt="" class="main-title-detail-bg">
