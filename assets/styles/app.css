@@ -1825,10 +1825,11 @@ footer .social a svg{
 
 .stats{
   display: flex;
-  align-items: center;
+  align-items: top;
   flex-wrap: wrap;
   gap: 20px;
   margin-bottom: 200px;
+  justify-content: center;
 }
 
 .stat{

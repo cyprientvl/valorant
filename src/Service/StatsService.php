@@ -7,13 +7,14 @@ use App\Repository\StatsRepository;
 class StatsService
 {
     public function __construct(
-        private StatsRepository $statsRepository
+        private StatsRepository $statsRepository,
+        private ItemService $itemService
     ) {
     }
 
     public function getMostUsedSkins(): array
     {
-        return $this->statsRepository->findMostUsedSkins();
+        return $this->statsRepository->findMostUsedSkins($this->itemService->getItemType());
     }
 
     public function getMostUsedWeaponChromas(): array

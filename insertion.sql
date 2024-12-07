@@ -1,289 +1,155 @@
--- Users
+INSERT INTO `item` (`id`, `display_name`, `item_type`, `display_icon`) VALUES
+('157bcebe-484d-82e2-2a60-c8b4b11197ea', 'Prime//2.0 Odin', 'Odin', 'https://media.valorant-api.com/weaponskins/157bcebe-484d-82e2-2a60-c8b4b11197ea/displayicon.png'),
+('25a7f0f2-4bce-7e45-b4b0-ca9264f5dfcc', 'Glitchpop Phantom', 'Phantom', 'https://media.valorant-api.com/weaponskins/25a7f0f2-4bce-7e45-b4b0-ca9264f5dfcc/displayicon.png'),
+('26d0c312-46c2-1912-302a-b7b8f62640ca', 'Araxys Bulldog', 'Bulldog', 'https://media.valorant-api.com/weaponskins/26d0c312-46c2-1912-302a-b7b8f62640ca/displayicon.png'),
+('285c6731-4451-b930-7a3d-c5a736d00f5e', 'Glitchpop Bulldog', 'Bulldog', 'https://media.valorant-api.com/weaponskins/285c6731-4451-b930-7a3d-c5a736d00f5e/displayicon.png'),
+('28a659a4-439e-fcd0-6236-d39979ee5c51', 'Glitchpop Judge', 'Judge', 'https://media.valorant-api.com/weaponskins/28a659a4-439e-fcd0-6236-d39979ee5c51/displayicon.png'),
+('341ef273-43fb-7911-71e8-50adada4cee1', 'Infantry Operator', 'Operator', 'https://media.valorant-api.com/weaponskins/341ef273-43fb-7911-71e8-50adada4cee1/displayicon.png'),
+('46f32f75-4fc8-7121-8a77-db8db43afc67', 'Spectrum Classic', 'Classic', 'https://media.valorant-api.com/weaponskins/46f32f75-4fc8-7121-8a77-db8db43afc67/displayicon.png'),
+('4eb45d71-4fa4-be4f-7409-cf92123f1d22', 'Radiant Entertainment System Phantom', 'Phantom', 'https://media.valorant-api.com/weaponskins/4eb45d71-4fa4-be4f-7409-cf92123f1d22/displayicon.png'),
+('5596d764-4b62-210b-59db-7982e9d4c23f', 'Glitchpop Frenzy', 'Frenzy', 'https://media.valorant-api.com/weaponskins/5596d764-4b62-210b-59db-7982e9d4c23f/displayicon.png'),
+('74789f33-4632-8052-96d7-258538721a32', 'Glitchpop Vandal', 'Vandal', 'https://media.valorant-api.com/weaponskins/74789f33-4632-8052-96d7-258538721a32/displayicon.png'),
+('81c68821-46d3-9176-294c-abba0bc64e0b', 'Chicken Out Spray', 'spray', 'https://media.valorant-api.com/sprays/81c68821-46d3-9176-294c-abba0bc64e0b/displayicon.png'),
+('892b5053-4c0b-149e-38d0-c3a8d6f24384', 'Gaia\'s Vengeance Bucky', 'Bucky', 'https://media.valorant-api.com/weaponskins/892b5053-4c0b-149e-38d0-c3a8d6f24384/displayicon.png'),
+('8b2598eb-4db9-6338-4a25-c780402c780e', 'Glitchpop Classic', 'Classic', 'https://media.valorant-api.com/weaponskins/8b2598eb-4db9-6338-4a25-c780402c780e/displayicon.png'),
+('91881981-4ce7-e081-a897-1bbb51996ac4', 'Fiber Optic Spectre', 'Spectre', 'https://media.valorant-api.com/weaponskins/91881981-4ce7-e081-a897-1bbb51996ac4/displayicon.png'),
+('9237e734-4a2a-38ae-7438-6cbee901877d', 'Prime//2.0 Karambit', 'Melee', 'https://media.valorant-api.com/weaponskins/9237e734-4a2a-38ae-7438-6cbee901877d/displayicon.png'),
+('94b40026-4efb-39ea-69d7-fca60be39c56', 'Elderflame Dagger', 'Melee', 'https://media.valorant-api.com/weaponskins/94b40026-4efb-39ea-69d7-fca60be39c56/displayicon.png'),
+('97af88e4-4176-9fa3-4a26-57919443dab7', 'Glitchpop Odin', 'Odin', 'https://media.valorant-api.com/weaponskins/97af88e4-4176-9fa3-4a26-57919443dab7/displayicon.png'),
+('a491b943-43e3-4e98-64a6-fc87fca43605', 'Glitchpop Operator', 'Operator', 'https://media.valorant-api.com/weaponskins/a491b943-43e3-4e98-64a6-fc87fca43605/displayicon.png'),
+('a5d0a0db-47cf-d1c4-c441-2db1688457c8', '2023 Game Changers Winner Title', 'playerTitle', ''),
+('daed0e44-4ab6-22b4-a5a5-57a4957a056b', 'Gaia\'s Vengeance Ghost', 'Ghost', 'https://media.valorant-api.com/weaponskins/daed0e44-4ab6-22b4-a5a5-57a4957a056b/displayicon.png'),
+('ddc025b2-475f-889a-2800-80b4215582bc', 'Glitchpop Dagger', 'Melee', 'https://media.valorant-api.com/weaponskins/ddc025b2-475f-889a-2800-80b4215582bc/displayicon.png'),
+('f0c42e14-4a92-132d-dfd4-cbbef103340c', 'Glitchpop Axe', 'Melee', 'https://media.valorant-api.com/weaponskins/f0c42e14-4a92-132d-dfd4-cbbef103340c/displayicon.png'),
+('fca32892-4f2f-228b-0f5c-209ad50199b3', 'Chicken Noir Card', 'playerCard', 'https://media.valorant-api.com/playercards/fca32892-4f2f-228b-0f5c-209ad50199b3/largeart.png');
 
--- A faire à la main
-INSERT INTO
-    user (id, username, roles, password)
-VALUES (
-        1,
-        'JettMain',
-        '["ROLE_USER"]',
-        '$2y$13$A8.jzjoZIFZ6oKs8Az8Xt.Ns0xJ0Gg0jo3kH0K8r4BBQbcVPTnR8O'
-    ),
-    (
-        2,
-        'PhoenixPro',
-        '["ROLE_USER"]',
-        '$2y$13$A8.jzjoZIFZ6oKs8Az8Xt.Ns0xJ0Gg0jo3kH0K8r4BBQbcVPTnR8O'
-    ),
-    (
-        3,
-        'ValorantKing',
-        '["ROLE_USER"]',
-        '$2y$13$A8.jzjoZIFZ6oKs8Az8Xt.Ns0xJ0Gg0jo3kH0K8r4BBQbcVPTnR8O'
-    ),
-    (
-        4,
-        'SageHealer',
-        '["ROLE_USER"]',
-        '$2y$13$A8.jzjoZIFZ6oKs8Az8Xt.Ns0xJ0Gg0jo3kH0K8r4BBQbcVPTnR8O'
-    ),
-    (
-        5,
-        'RazeMaster',
-        '["ROLE_USER"]',
-        '$2y$13$A8.jzjoZIFZ6oKs8Az8Xt.Ns0xJ0Gg0jo3kH0K8r4BBQbcVPTnR8O'
-    );
+INSERT INTO `chroma` (`id`, `item_id`, `display_name`, `display_icon`) VALUES
+('05dc58f4-4170-c088-ba23-fd9a2ddcfa9d', '74789f33-4632-8052-96d7-258538721a32', 'Glitchpop Vandal Level 4\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/05dc58f4-4170-c088-ba23-fd9a2ddcfa9d/fullrender.png'),
+('076b77c1-493d-ef86-2902-c4ac2a64dac2', 'a491b943-43e3-4e98-64a6-fc87fca43605', 'Glitchpop Operator Level 4\n(Variant 2 Red)', 'https://media.valorant-api.com/weaponskinchromas/076b77c1-493d-ef86-2902-c4ac2a64dac2/fullrender.png'),
+('0b30b3e8-4696-7b7c-fed2-50b34234965a', '97af88e4-4176-9fa3-4a26-57919443dab7', 'Glitchpop Odin Level 4\r\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/0b30b3e8-4696-7b7c-fed2-50b34234965a/fullrender.png'),
+('0d00f717-409f-abb7-b5e1-9cbd3dcd2752', '285c6731-4451-b930-7a3d-c5a736d00f5e', 'Glitchpop Bulldog Level 4\r\n(Variant 2 Red)', 'https://media.valorant-api.com/weaponskinchromas/0d00f717-409f-abb7-b5e1-9cbd3dcd2752/fullrender.png'),
+('16e8a438-4761-1887-3792-7bab966a7483', '74789f33-4632-8052-96d7-258538721a32', 'Glitchpop Vandal Level 4\n(Variant 2 Red)', 'https://media.valorant-api.com/weaponskinchromas/16e8a438-4761-1887-3792-7bab966a7483/fullrender.png'),
+('1746329a-450b-db34-eb45-a19c4af64aa8', '46f32f75-4fc8-7121-8a77-db8db43afc67', 'Spectrum Classic Level 4\n(Variant 3 Purple/Pink)', 'https://media.valorant-api.com/weaponskinchromas/1746329a-450b-db34-eb45-a19c4af64aa8/fullrender.png'),
+('19d84374-4647-33ad-50f8-efb80f8eda7c', '26d0c312-46c2-1912-302a-b7b8f62640ca', 'Araxys Bulldog Level 4\n(Variant 3 Silver)', 'https://media.valorant-api.com/weaponskinchromas/19d84374-4647-33ad-50f8-efb80f8eda7c/fullrender.png'),
+('1d4e551a-41b8-d763-3036-d3991892f35f', 'a491b943-43e3-4e98-64a6-fc87fca43605', 'Glitchpop Operator', 'https://media.valorant-api.com/weaponskinchromas/1d4e551a-41b8-d763-3036-d3991892f35f/fullrender.png'),
+('1e959cbe-4649-a049-f789-b2b9c9d7ec26', '28a659a4-439e-fcd0-6236-d39979ee5c51', 'Glitchpop Judge Level 4\r\n(Variant 2 Red)', 'https://media.valorant-api.com/weaponskinchromas/1e959cbe-4649-a049-f789-b2b9c9d7ec26/fullrender.png'),
+('1fce96b9-4043-3ce8-e5e2-b4870405f6f0', 'daed0e44-4ab6-22b4-a5a5-57a4957a056b', 'Gaia\'s Vengeance Ghost Level 4\n(Variant 2 Green)', 'https://media.valorant-api.com/weaponskinchromas/1fce96b9-4043-3ce8-e5e2-b4870405f6f0/fullrender.png'),
+('20ebb41a-4edc-0fa3-f3e9-b3b5d91e8524', '157bcebe-484d-82e2-2a60-c8b4b11197ea', 'Prime//2.0 Odin Level 4\n(Variant 3 Orange)', 'https://media.valorant-api.com/weaponskinchromas/20ebb41a-4edc-0fa3-f3e9-b3b5d91e8524/fullrender.png'),
+('219a4715-4a3e-3027-e128-4b8cc92fa5d8', '91881981-4ce7-e081-a897-1bbb51996ac4', 'Fiber Optic Spectre\n(Variant 2 Gold)', 'https://media.valorant-api.com/weaponskinchromas/219a4715-4a3e-3027-e128-4b8cc92fa5d8/fullrender.png'),
+('245202ea-46e4-72c3-0864-f08a8207c0c3', '9237e734-4a2a-38ae-7438-6cbee901877d', 'Prime//2.0 Karambit', 'https://media.valorant-api.com/weaponskinchromas/245202ea-46e4-72c3-0864-f08a8207c0c3/fullrender.png'),
+('293d9ddb-41ef-387f-3d71-908384b6ad87', '285c6731-4451-b930-7a3d-c5a736d00f5e', 'Glitchpop Bulldog Level 4\r\n(Variant 3 Gold)', 'https://media.valorant-api.com/weaponskinchromas/293d9ddb-41ef-387f-3d71-908384b6ad87/fullrender.png'),
+('2abe2d6a-4d38-434a-ff64-608b936c2661', '28a659a4-439e-fcd0-6236-d39979ee5c51', 'Glitchpop Judge Level 4\r\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/2abe2d6a-4d38-434a-ff64-608b936c2661/fullrender.png'),
+('37617d36-4092-c473-9573-c69168c1b254', '341ef273-43fb-7911-71e8-50adada4cee1', 'Infantry Operator', 'https://media.valorant-api.com/weaponskinchromas/37617d36-4092-c473-9573-c69168c1b254/fullrender.png'),
+('3b04c752-4564-e7c4-cdf6-7f9c741e3587', '5596d764-4b62-210b-59db-7982e9d4c23f', 'Glitchpop Frenzy Level 4\r\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/3b04c752-4564-e7c4-cdf6-7f9c741e3587/fullrender.png'),
+('47424591-4a33-eb97-f90e-78998bfe2d41', 'daed0e44-4ab6-22b4-a5a5-57a4957a056b', 'Gaia\'s Vengeance Ghost', 'https://media.valorant-api.com/weaponskinchromas/47424591-4a33-eb97-f90e-78998bfe2d41/fullrender.png'),
+('49451aa7-4a30-3d0e-2cf9-a19afc966041', '26d0c312-46c2-1912-302a-b7b8f62640ca', 'Araxys Bulldog Level 4\n(Variant 1 Purple)', 'https://media.valorant-api.com/weaponskinchromas/49451aa7-4a30-3d0e-2cf9-a19afc966041/fullrender.png'),
+('4a8d58b1-4b4c-0cdb-6435-8395f21663e2', '91881981-4ce7-e081-a897-1bbb51996ac4', 'Fiber Optic Spectre\n(Variant 1 Silver)', 'https://media.valorant-api.com/weaponskinchromas/4a8d58b1-4b4c-0cdb-6435-8395f21663e2/fullrender.png'),
+('4d83874b-4385-a927-222c-3097cb330824', '8b2598eb-4db9-6338-4a25-c780402c780e', 'Glitchpop Classic Level 4\n(Variant 3 Gold)', 'https://media.valorant-api.com/weaponskinchromas/4d83874b-4385-a927-222c-3097cb330824/fullrender.png'),
+('4f04a759-4406-9ab7-18b4-0a9044ecdd60', '4eb45d71-4fa4-be4f-7409-cf92123f1d22', 'Radiant Entertainment System Phantom', 'https://media.valorant-api.com/weaponskinchromas/4f04a759-4406-9ab7-18b4-0a9044ecdd60/fullrender.png'),
+('54caeb7f-4fc4-6adb-45a6-cfb6202d9c24', '97af88e4-4176-9fa3-4a26-57919443dab7', 'Glitchpop Odin Level 4\r\n(Variant 2 Red)', 'https://media.valorant-api.com/weaponskinchromas/54caeb7f-4fc4-6adb-45a6-cfb6202d9c24/fullrender.png'),
+('5966c88b-4662-be62-5ae6-50bc036700b5', '28a659a4-439e-fcd0-6236-d39979ee5c51', 'Glitchpop Judge', 'https://media.valorant-api.com/weaponskinchromas/5966c88b-4662-be62-5ae6-50bc036700b5/fullrender.png'),
+('5d6ee097-457f-67ef-5a35-d79e109095d6', '892b5053-4c0b-149e-38d0-c3a8d6f24384', 'Gaia\'s Vengeance Bucky Level 4\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/5d6ee097-457f-67ef-5a35-d79e109095d6/fullrender.png'),
+('671f5e30-42ac-20dd-62e2-7ba22f1d20ec', 'a491b943-43e3-4e98-64a6-fc87fca43605', 'Glitchpop Operator Level 4\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/671f5e30-42ac-20dd-62e2-7ba22f1d20ec/fullrender.png'),
+('68b30d4e-4743-f1bd-b90f-fbaa6005a215', 'a491b943-43e3-4e98-64a6-fc87fca43605', 'Glitchpop Operator Level 4\n(Variant 3 Gold)', 'https://media.valorant-api.com/weaponskinchromas/68b30d4e-4743-f1bd-b90f-fbaa6005a215/fullrender.png'),
+('710ff5e9-48fd-5890-b061-9689f54fe848', '25a7f0f2-4bce-7e45-b4b0-ca9264f5dfcc', 'Glitchpop Phantom Level 4\n(Variant 2 Red)', 'https://media.valorant-api.com/weaponskinchromas/710ff5e9-48fd-5890-b061-9689f54fe848/fullrender.png'),
+('7dd3f7d8-455b-bc3a-94b8-af9fba0bebed', '25a7f0f2-4bce-7e45-b4b0-ca9264f5dfcc', 'Glitchpop Phantom', 'https://media.valorant-api.com/weaponskinchromas/7dd3f7d8-455b-bc3a-94b8-af9fba0bebed/fullrender.png'),
+('8617ebbb-418a-0819-1ca2-b383f8ae757c', '157bcebe-484d-82e2-2a60-c8b4b11197ea', 'Prime//2.0 Odin Level 4\n(Variant 2 Green)', 'https://media.valorant-api.com/weaponskinchromas/8617ebbb-418a-0819-1ca2-b383f8ae757c/fullrender.png'),
+('91e9bfbe-4de0-03d1-d1ea-1d8fcea4a7ab', '4eb45d71-4fa4-be4f-7409-cf92123f1d22', 'Radiant Entertainment System Phantom Level 4\n(Variant 2 K.nock O.ut!!)', 'https://media.valorant-api.com/weaponskinchromas/91e9bfbe-4de0-03d1-d1ea-1d8fcea4a7ab/fullrender.png'),
+('93b03058-467e-6d13-5554-4a88880430c7', '8b2598eb-4db9-6338-4a25-c780402c780e', 'Glitchpop Classic Level 4\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/93b03058-467e-6d13-5554-4a88880430c7/fullrender.png'),
+('9667983e-4c8c-e5b2-68d7-be84f9b3d46c', '97af88e4-4176-9fa3-4a26-57919443dab7', 'Glitchpop Odin', 'https://media.valorant-api.com/weaponskinchromas/9667983e-4c8c-e5b2-68d7-be84f9b3d46c/fullrender.png'),
+('9d137aeb-41a1-a84f-3523-5194e24cc580', 'ddc025b2-475f-889a-2800-80b4215582bc', 'Glitchpop Dagger', 'https://media.valorant-api.com/weaponskinchromas/9d137aeb-41a1-a84f-3523-5194e24cc580/fullrender.png'),
+('9e59563c-4467-43df-3b58-2ca43c25abde', '157bcebe-484d-82e2-2a60-c8b4b11197ea', 'Prime//2.0 Odin', 'https://media.valorant-api.com/weaponskinchromas/9e59563c-4467-43df-3b58-2ca43c25abde/fullrender.png'),
+('a4581c31-4e72-afc0-68b0-fd96e71515be', '91881981-4ce7-e081-a897-1bbb51996ac4', 'Fiber Optic Spectre', 'https://media.valorant-api.com/weaponskinchromas/a4581c31-4e72-afc0-68b0-fd96e71515be/fullrender.png'),
+('a9aa0b3b-4f6b-52eb-ce5c-4fae5eb240ab', '4eb45d71-4fa4-be4f-7409-cf92123f1d22', 'Radiant Entertainment System Phantom Level 4\n(Variant 1 Dance Fever)', 'https://media.valorant-api.com/weaponskinchromas/a9aa0b3b-4f6b-52eb-ce5c-4fae5eb240ab/fullrender.png'),
+('ab6e58b2-49a3-e0e8-1240-df94230393d5', '5596d764-4b62-210b-59db-7982e9d4c23f', 'Glitchpop Frenzy Level 4\r\n(Variant 2 Red)', 'https://media.valorant-api.com/weaponskinchromas/ab6e58b2-49a3-e0e8-1240-df94230393d5/fullrender.png'),
+('b46355ea-407d-241b-0119-618774f4dbc9', 'daed0e44-4ab6-22b4-a5a5-57a4957a056b', 'Gaia\'s Vengeance Ghost Level 4\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/b46355ea-407d-241b-0119-618774f4dbc9/fullrender.png'),
+('b58f249b-4e8f-5532-6f35-a9b3b39dc15c', '74789f33-4632-8052-96d7-258538721a32', 'Glitchpop Vandal', 'https://media.valorant-api.com/weaponskinchromas/b58f249b-4e8f-5532-6f35-a9b3b39dc15c/fullrender.png'),
+('b923bcc8-4cb8-2a19-070e-588686aae090', '5596d764-4b62-210b-59db-7982e9d4c23f', 'Glitchpop Frenzy Level 4\r\n(Variant 3 Gold)', 'https://media.valorant-api.com/weaponskinchromas/b923bcc8-4cb8-2a19-070e-588686aae090/fullrender.png'),
+('ba802a0b-4038-4208-89c7-58828408ebed', '25a7f0f2-4bce-7e45-b4b0-ca9264f5dfcc', 'Glitchpop Phantom Level 4\n(Variant 3 Gold)', 'https://media.valorant-api.com/weaponskinchromas/ba802a0b-4038-4208-89c7-58828408ebed/fullrender.png'),
+('bb1e1703-4ea1-9be5-c145-4480a6b9f0d7', '8b2598eb-4db9-6338-4a25-c780402c780e', 'Glitchpop Classic', 'https://media.valorant-api.com/weaponskinchromas/bb1e1703-4ea1-9be5-c145-4480a6b9f0d7/fullrender.png'),
+('bb88381f-423f-cd76-9ac1-7e9fe541cf25', '28a659a4-439e-fcd0-6236-d39979ee5c51', 'Glitchpop Judge Level 4\r\n(Variant 3 Gold)', 'https://media.valorant-api.com/weaponskinchromas/bb88381f-423f-cd76-9ac1-7e9fe541cf25/fullrender.png'),
+('bba7f46f-41ee-9e6c-c37a-dca8ee4bf50e', '97af88e4-4176-9fa3-4a26-57919443dab7', 'Glitchpop Odin Level 4\r\n(Variant 3 Gold)', 'https://media.valorant-api.com/weaponskinchromas/bba7f46f-41ee-9e6c-c37a-dca8ee4bf50e/fullrender.png'),
+('be6c975e-42d4-17cb-5591-dc8e11b4de05', '8b2598eb-4db9-6338-4a25-c780402c780e', 'Glitchpop Classic Level 4\n(Variant 2 Red)', 'https://media.valorant-api.com/weaponskinchromas/be6c975e-42d4-17cb-5591-dc8e11b4de05/fullrender.png'),
+('c2e3235a-426a-0a34-8559-6492ca4434a9', '46f32f75-4fc8-7121-8a77-db8db43afc67', 'Spectrum Classic Level 4\n(Variant 1 Black)', 'https://media.valorant-api.com/weaponskinchromas/c2e3235a-426a-0a34-8559-6492ca4434a9/fullrender.png'),
+('c8ec1980-46c4-83d2-f405-58b36bed40c7', '46f32f75-4fc8-7121-8a77-db8db43afc67', 'Spectrum Classic Level 4\n(Variant 2 Red)', 'https://media.valorant-api.com/weaponskinchromas/c8ec1980-46c4-83d2-f405-58b36bed40c7/fullrender.png'),
+('cb43bee0-42ae-6ec8-2026-fab5f55fb166', '91881981-4ce7-e081-a897-1bbb51996ac4', 'Fiber Optic Spectre\r\n(Variant 3 Emerald)', 'https://media.valorant-api.com/weaponskinchromas/cb43bee0-42ae-6ec8-2026-fab5f55fb166/fullrender.png'),
+('d0b93627-4ba0-f16b-7ccb-529d7066eebd', '892b5053-4c0b-149e-38d0-c3a8d6f24384', 'Gaia\'s Vengeance Bucky', 'https://media.valorant-api.com/weaponskinchromas/d0b93627-4ba0-f16b-7ccb-529d7066eebd/fullrender.png'),
+('d74171bf-4f3a-7dd7-76b9-04afeaeb72c0', '94b40026-4efb-39ea-69d7-fca60be39c56', 'Elderflame Dagger', 'https://media.valorant-api.com/weaponskinchromas/d74171bf-4f3a-7dd7-76b9-04afeaeb72c0/fullrender.png'),
+('d9c26f8e-496a-16c1-36e1-cfb81fb22d5f', '74789f33-4632-8052-96d7-258538721a32', 'Glitchpop Vandal Level 4\n(Variant 3 Gold)', 'https://media.valorant-api.com/weaponskinchromas/d9c26f8e-496a-16c1-36e1-cfb81fb22d5f/fullrender.png'),
+('daa45ca4-4fc0-4579-d8fd-a588183751c8', '892b5053-4c0b-149e-38d0-c3a8d6f24384', 'Gaia\'s Vengeance Bucky Level 4\n(Variant 2 Green)', 'https://media.valorant-api.com/weaponskinchromas/daa45ca4-4fc0-4579-d8fd-a588183751c8/fullrender.png'),
+('de8ea7bb-4006-906d-d1c7-25ae5ccb8b48', '5596d764-4b62-210b-59db-7982e9d4c23f', 'Glitchpop Frenzy', 'https://media.valorant-api.com/weaponskinchromas/de8ea7bb-4006-906d-d1c7-25ae5ccb8b48/fullrender.png'),
+('ded15275-482e-e9da-0002-1b9d495d2e98', 'f0c42e14-4a92-132d-dfd4-cbbef103340c', 'Glitchpop Axe', 'https://media.valorant-api.com/weaponskinchromas/ded15275-482e-e9da-0002-1b9d495d2e98/fullrender.png'),
+('e4afd93d-43f4-948c-7e6a-f88b1549409b', '285c6731-4451-b930-7a3d-c5a736d00f5e', 'Glitchpop Bulldog Level 4\r\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/e4afd93d-43f4-948c-7e6a-f88b1549409b/fullrender.png'),
+('e6a6ea31-4a05-8889-b065-d09a536afffd', '46f32f75-4fc8-7121-8a77-db8db43afc67', 'Spectrum Classic', 'https://media.valorant-api.com/weaponskinchromas/e6a6ea31-4a05-8889-b065-d09a536afffd/fullrender.png'),
+('ea8c7f51-4e3e-2593-2d37-eaa0119b9829', '26d0c312-46c2-1912-302a-b7b8f62640ca', 'Araxys Bulldog', 'https://media.valorant-api.com/weaponskinchromas/ea8c7f51-4e3e-2593-2d37-eaa0119b9829/fullrender.png'),
+('ecc92d4d-4eab-255b-2075-5ba068915168', 'daed0e44-4ab6-22b4-a5a5-57a4957a056b', 'Gaia\'s Vengeance Ghost Level 4\r\n(Variant 3 Orange)', 'https://media.valorant-api.com/weaponskinchromas/ecc92d4d-4eab-255b-2075-5ba068915168/fullrender.png'),
+('ed34c641-4f1d-e38f-0018-4cb11fed9ee7', '157bcebe-484d-82e2-2a60-c8b4b11197ea', 'Prime//2.0 Odin Level 4\n(Variant 1 Gold)', 'https://media.valorant-api.com/weaponskinchromas/ed34c641-4f1d-e38f-0018-4cb11fed9ee7/fullrender.png'),
+('f11c775b-4ddf-1596-3cdb-4e826ec0e1f4', '26d0c312-46c2-1912-302a-b7b8f62640ca', 'Araxys Bulldog Level 4\n(Variant 2 Black)', 'https://media.valorant-api.com/weaponskinchromas/f11c775b-4ddf-1596-3cdb-4e826ec0e1f4/fullrender.png'),
+('f7dd47c7-467b-36f1-0d13-beb53372b666', '285c6731-4451-b930-7a3d-c5a736d00f5e', 'Glitchpop Bulldog', 'https://media.valorant-api.com/weaponskinchromas/f7dd47c7-467b-36f1-0d13-beb53372b666/fullrender.png'),
+('fa3668ce-4bcc-a909-eafa-589bd6aa47d8', '892b5053-4c0b-149e-38d0-c3a8d6f24384', 'Gaia\'s Vengeance Bucky Level 4\n(Variant 3 Orange)', 'https://media.valorant-api.com/weaponskinchromas/fa3668ce-4bcc-a909-eafa-589bd6aa47d8/fullrender.png'),
+('ff938463-444c-9bdc-38fa-3c98e865ab31', '25a7f0f2-4bce-7e45-b4b0-ca9264f5dfcc', 'Glitchpop Phantom Level 4\n(Variant 1 Blue)', 'https://media.valorant-api.com/weaponskinchromas/ff938463-444c-9bdc-38fa-3c98e865ab31/fullrender.png');
 
--- Items (avec itemType = 'skin' pour les skins d'armes)
-INSERT INTO
-    item (
-        id,
-        display_name,
-        display_icon,
-        item_type
-    )
-VALUES (
-        '1fb8b5d3-44b5-4a3c-a19d-52b456e6d9c8',
-        'Prime Vandal',
-        'https://media.valorant-api.com/weaponskinchromas/1fb8b5d3/displayicon.png',
-        'skin'
-    ),
-    (
-        '2f83f634-47b3-44b5-9e27-4b3e6a56863a',
-        'Reaver Operator',
-        'https://media.valorant-api.com/weaponskinchromas/2f83f634/displayicon.png',
-        'skin'
-    ),
-    (
-        '892ecb9b-4727-4fe6-8e43-de842a6c336d',
-        'Ion Phantom',
-        'https://media.valorant-api.com/weaponskinchromas/892ecb9b/displayicon.png',
-        'skin'
-    ),
-    (
-        '7da96a2a-43ce-699c-0c34-7d8565cd3f9c',
-        'Oni Phantom',
-        'https://media.valorant-api.com/weaponskinchromas/7da96a2a/displayicon.png',
-        'skin'
-    ),
-    (
-        'ae8f3378-4091-4c2b-9518-396e3c9092f1',
-        'Glitchpop Vandal',
-        'https://media.valorant-api.com/weaponskinchromas/ae8f3378/displayicon.png',
-        'skin'
-    ),
-    (
-        '0a6d22c8-9f55-4c5a-a7e0-6c56a2b51ca5',
-        'Protocol Spectre',
-        'https://media.valorant-api.com/weaponskinchromas/0a6d22c8/displayicon.png',
-        'skin'
-    ),
-    (
-        '1c2e08a3-4c4b-85c9-6c4c-77b9da718dc5',
-        'RGX Vandal',
-        'https://media.valorant-api.com/weaponskinchromas/1c2e08a3/displayicon.png',
-        'skin'
-    );
 
--- Chromas
-INSERT INTO
-    chroma (
-        id,
-        display_name,
-        display_icon,
-        item_id
-    )
-VALUES (
-        '1fb8b5d3-blue',
-        'Prime Vandal Blue',
-        'https://media.valorant-api.com/weaponskinchromas/1fb8b5d3-blue/displayicon.png',
-        '1fb8b5d3-44b5-4a3c-a19d-52b456e6d9c8'
-    ),
-    (
-        '1fb8b5d3-orange',
-        'Prime Vandal Orange',
-        'https://media.valorant-api.com/weaponskinchromas/1fb8b5d3-orange/displayicon.png',
-        '1fb8b5d3-44b5-4a3c-a19d-52b456e6d9c8'
-    ),
-    (
-        '2f83f634-red',
-        'Reaver Operator Red',
-        'https://media.valorant-api.com/weaponskinchromas/2f83f634-red/displayicon.png',
-        '2f83f634-47b3-44b5-9e27-4b3e6a56863a'
-    ),
-    (
-        '892ecb9b-green',
-        'Ion Phantom Green',
-        'https://media.valorant-api.com/weaponskinchromas/892ecb9b-green/displayicon.png',
-        '892ecb9b-4727-4fe6-8e43-de842a6c336d'
-    ),
-    (
-        '7da96a2a-black',
-        'Oni Phantom Black',
-        'https://media.valorant-api.com/weaponskinchromas/7da96a2a-black/displayicon.png',
-        '7da96a2a-43ce-699c-0c34-7d8565cd3f9c'
-    ),
-    (
-        'ae8f3378-blue',
-        'Glitchpop Vandal Blue',
-        'https://media.valorant-api.com/weaponskinchromas/ae8f3378-blue/displayicon.png',
-        'ae8f3378-4091-4c2b-9518-396e3c9092f1'
-    ),
-    (
-        '0a6d22c8-white',
-        'Protocol Spectre White',
-        'https://media.valorant-api.com/weaponskinchromas/0a6d22c8-white/displayicon.png',
-        '0a6d22c8-9f55-4c5a-a7e0-6c56a2b51ca5'
-    ),
-    (
-        '1c2e08a3-red',
-        'RGX Vandal Red',
-        'https://media.valorant-api.com/weaponskinchromas/1c2e08a3-red/displayicon.png',
-        '1c2e08a3-4c4b-85c9-6c4c-77b9da718dc5'
-    );
+INSERT INTO `user` (`id`, `username`, `roles`, `password`) VALUES
+(1, 'JettMain', '[\"ROLE_USER\"]', '$2y$13$R.6uhrumH40sa3FdpdBLJOxVUAX3A9L.aor.YGNb4QEf7MhKqtRkq'),
+(2, 'PhoenixPro', '[\"ROLE_USER\"]', '$2y$13$R.6uhrumH40sa3FdpdBLJOxVUAX3A9L.aor.YGNb4QEf7MhKqtRkq'),
+(3, 'ValorantKing', '[\"ROLE_USER\"]', '$2y$13$R.6uhrumH40sa3FdpdBLJOxVUAX3A9L.aor.YGNb4QEf7MhKqtRkq'),
+(4, 'SageHealer', '[\"ROLE_USER\"]', '$2y$13$R.6uhrumH40sa3FdpdBLJOxVUAX3A9L.aor.YGNb4QEf7MhKqtRkq'),
+(5, 'RazeMaster', '[\"ROLE_USER\"]', '$2y$13$R.6uhrumH40sa3FdpdBLJOxVUAX3A9L.aor.YGNb4QEf7MhKqtRkq'),
+(6, 'test1', '[\"ROLE_USER\"]', '$2y$13$R.6uhrumH40sa3FdpdBLJOxVUAX3A9L.aor.YGNb4QEf7MhKqtRkq');
 
--- Lockers (un seul locker par utilisateur)
-INSERT INTO
-    locker (id, name, is_public, user_id)
-VALUES (
-        1,
-        'JettMain Loadout',
-        true,
-        1
-    ),
-    (2, 'Pro Setup', true, 2),
-    (
-        3,
-        'Dream Collection',
-        true,
-        3
-    ),
-    (4, 'Ranked Loadout', true, 4),
-    (5, 'Expensive Stuff', true, 5);
+INSERT INTO `locker` (`id`, `user_id`, `name`, `is_public`) VALUES
+(1, 1, 'JettMain Loadout', 1),
+(2, 2, 'Pro Setup', 1),
+(3, 3, 'Dream Collection', 1),
+(4, 4, 'Ranked Loadout', 1),
+(5, 5, 'Expensive Stuff', 1);
 
--- Table de liaison pour les likes des casiers
-INSERT INTO
-    locker_user_likes (locker_id, user_id)
-VALUES (1, 2),
-    (1, 3),
-    (1, 4), -- JettMain Loadout a 3 likes
-    (2, 1),
-    (2, 3),
-    (2, 4),
-    (2, 5), -- Pro Setup a 4 likes
-    (3, 1),
-    (3, 2), -- Dream Collection a 2 likes
-    (4, 1),
-    (4, 2),
-    (4, 3), -- Ranked Loadout a 3 likes
-    (5, 1),
-    (5, 2),
-    (5, 3),
-    (5, 4);
--- Expensive Stuff a 4 likes
--- LockerItems (avec isMainItemType)
-INSERT INTO
-    locker_item (
-        id,
-        locker_id,
-        item_id,
-        chroma_id,
-        is_main_item_type
-    )
-VALUES
-    -- JettMain's loadout
-    (
-        1,
-        1,
-        '1fb8b5d3-44b5-4a3c-a19d-52b456e6d9c8',
-        '1fb8b5d3-blue',
-        true
-    ),
-    (
-        2,
-        1,
-        '2f83f634-47b3-44b5-9e27-4b3e6a56863a',
-        '2f83f634-red',
-        true
-    ),
-    (
-        3,
-        1,
-        '892ecb9b-4727-4fe6-8e43-de842a6c336d',
-        '892ecb9b-green',
-        true
-    ),
-    -- PhoenixPro's loadout
-    (
-        4,
-        2,
-        '1fb8b5d3-44b5-4a3c-a19d-52b456e6d9c8',
-        '1fb8b5d3-orange',
-        true
-    ),
-    (
-        5,
-        2,
-        '892ecb9b-4727-4fe6-8e43-de842a6c336d',
-        '892ecb9b-green',
-        true
-    ),
-    (
-        6,
-        2,
-        '1c2e08a3-4c4b-85c9-6c4c-77b9da718dc5',
-        '1c2e08a3-red',
-        true
-    ),
-    -- ValorantKing's loadout
-    (
-        7,
-        3,
-        'ae8f3378-4091-4c2b-9518-396e3c9092f1',
-        'ae8f3378-blue',
-        true
-    ),
-    (
-        8,
-        3,
-        '7da96a2a-43ce-699c-0c34-7d8565cd3f9c',
-        '7da96a2a-black',
-        true
-    ),
-    -- SageHealer's loadout
-    (
-        9,
-        4,
-        '1fb8b5d3-44b5-4a3c-a19d-52b456e6d9c8',
-        '1fb8b5d3-blue',
-        true
-    ),
-    (
-        10,
-        4,
-        '2f83f634-47b3-44b5-9e27-4b3e6a56863a',
-        '2f83f634-red',
-        true
-    ),
-    -- RazeMaster's loadout
-    (
-        11,
-        5,
-        '1c2e08a3-4c4b-85c9-6c4c-77b9da718dc5',
-        '1c2e08a3-red',
-        true
-    ),
-    (
-        12,
-        5,
-        '0a6d22c8-9f55-4c5a-a7e0-6c56a2b51ca5',
-        '0a6d22c8-white',
-        true
-    ),
-    (
-        13,
-        5,
-        'ae8f3378-4091-4c2b-9518-396e3c9092f1',
-        'ae8f3378-blue',
-        true
-    );
+INSERT INTO `locker_item` (`id`, `locker_id`, `item_id`, `chroma_id`, `is_main_item_type`) VALUES
+(1, 1, '74789f33-4632-8052-96d7-258538721a32', 'b58f249b-4e8f-5532-6f35-a9b3b39dc15c', 0),
+(2, 1, '91881981-4ce7-e081-a897-1bbb51996ac4', 'a4581c31-4e72-afc0-68b0-fd96e71515be', 0),
+(3, 1, '94b40026-4efb-39ea-69d7-fca60be39c56', 'd74171bf-4f3a-7dd7-76b9-04afeaeb72c0', 0),
+(4, 1, '341ef273-43fb-7911-71e8-50adada4cee1', '37617d36-4092-c473-9573-c69168c1b254', 0),
+(5, 1, '26d0c312-46c2-1912-302a-b7b8f62640ca', 'ea8c7f51-4e3e-2593-2d37-eaa0119b9829', 0),
+(6, 1, '892b5053-4c0b-149e-38d0-c3a8d6f24384', 'd0b93627-4ba0-f16b-7ccb-529d7066eebd', 0),
+(7, 1, 'fca32892-4f2f-228b-0f5c-209ad50199b3', NULL, 0),
+(8, 2, '74789f33-4632-8052-96d7-258538721a32', 'b58f249b-4e8f-5532-6f35-a9b3b39dc15c', 0),
+(9, 2, '4eb45d71-4fa4-be4f-7409-cf92123f1d22', '4f04a759-4406-9ab7-18b4-0a9044ecdd60', 0),
+(10, 2, 'a5d0a0db-47cf-d1c4-c441-2db1688457c8', NULL, 0),
+(11, 2, '157bcebe-484d-82e2-2a60-c8b4b11197ea', '9e59563c-4467-43df-3b58-2ca43c25abde', 0),
+(12, 2, '91881981-4ce7-e081-a897-1bbb51996ac4', 'a4581c31-4e72-afc0-68b0-fd96e71515be', 0),
+(13, 3, '74789f33-4632-8052-96d7-258538721a32', 'b58f249b-4e8f-5532-6f35-a9b3b39dc15c', 0),
+(14, 3, '9237e734-4a2a-38ae-7438-6cbee901877d', '245202ea-46e4-72c3-0864-f08a8207c0c3', 0),
+(15, 3, '46f32f75-4fc8-7121-8a77-db8db43afc67', 'e6a6ea31-4a05-8889-b065-d09a536afffd', 0),
+(16, 3, '81c68821-46d3-9176-294c-abba0bc64e0b', NULL, 0),
+(17, 3, 'daed0e44-4ab6-22b4-a5a5-57a4957a056b', '47424591-4a33-eb97-f90e-78998bfe2d41', 0),
+(18, 3, '26d0c312-46c2-1912-302a-b7b8f62640ca', 'ea8c7f51-4e3e-2593-2d37-eaa0119b9829', 0),
+(19, 4, '74789f33-4632-8052-96d7-258538721a32', 'b58f249b-4e8f-5532-6f35-a9b3b39dc15c', 0),
+(20, 5, '97af88e4-4176-9fa3-4a26-57919443dab7', '9667983e-4c8c-e5b2-68d7-be84f9b3d46c', 0),
+(21, 5, '74789f33-4632-8052-96d7-258538721a32', 'b58f249b-4e8f-5532-6f35-a9b3b39dc15c', 0),
+(22, 5, '285c6731-4451-b930-7a3d-c5a736d00f5e', 'f7dd47c7-467b-36f1-0d13-beb53372b666', 0),
+(23, 5, '25a7f0f2-4bce-7e45-b4b0-ca9264f5dfcc', '7dd3f7d8-455b-bc3a-94b8-af9fba0bebed', 0),
+(24, 5, '28a659a4-439e-fcd0-6236-d39979ee5c51', '5966c88b-4662-be62-5ae6-50bc036700b5', 0),
+(25, 5, '5596d764-4b62-210b-59db-7982e9d4c23f', 'de8ea7bb-4006-906d-d1c7-25ae5ccb8b48', 0),
+(26, 5, '8b2598eb-4db9-6338-4a25-c780402c780e', 'bb1e1703-4ea1-9be5-c145-4480a6b9f0d7', 0),
+(27, 5, 'a491b943-43e3-4e98-64a6-fc87fca43605', '1d4e551a-41b8-d763-3036-d3991892f35f', 0),
+(28, 5, 'ddc025b2-475f-889a-2800-80b4215582bc', '9d137aeb-41a1-a84f-3523-5194e24cc580', 0),
+(29, 5, 'f0c42e14-4a92-132d-dfd4-cbbef103340c', 'ded15275-482e-e9da-0002-1b9d495d2e98', 0);
+
+INSERT INTO `locker_user_likes` (`locker_id`, `user_id`) VALUES
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 1),
+(2, 3),
+(2, 4),
+(2, 5),
+(3, 1),
+(3, 2),
+(4, 1),
+(4, 2),
+(4, 3),
+(5, 1),
+(5, 2),
+(5, 3),
+(5, 4);

@@ -118,7 +118,7 @@ class ItemService
             "Odin",
             "Ares",
             "Vandal",
-            "Bulldow",
+            "Bulldog",
             "Phantom",
             "Judge",
             "Bucky",

@@ -11,20 +11,19 @@ class StatsRepository
     ) {
     }
 
-    public function findMostUsedSkins(): array
+    public function findMostUsedSkins(array $itemTypes): array
     {
         return $this->entityManager->createQueryBuilder()
             ->select('i.id, i.displayName, i.displayIcon, COUNT(li.id) as useCount')
             ->from('App\Entity\Item', 'i')
             ->join('App\Entity\LockerItem', 'li', 'WITH', 'li.item = i.id')
-            ->where('i.itemType = :type')
-            ->setParameter('type', 'skin')
+            ->where('i.itemType IN (:types)')
+            ->setParameter('types', $itemTypes)
             ->groupBy('i.id')
             ->orderBy('useCount', 'DESC')
             ->setMaxResults(5)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     public function findMostUsedWeaponChromas(): array
@@ -49,8 +48,6 @@ class StatsRepository
             ->join('App\Entity\LockerItem', 'li', 'WITH', 'li.item = i.id')
             ->join('App\Entity\Locker', 'l', 'WITH', 'li.locker = l.id')
             ->join('l.userLikes', 'u')
-            ->where('i.itemType = :type')
-            ->setParameter('type', 'skin')
             ->groupBy('i.id')
             ->orderBy('totalLikes', 'DESC')
             ->setMaxResults(3)
