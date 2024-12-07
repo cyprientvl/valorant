@@ -3,18 +3,137 @@
 {% block title %}Hello StatsController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<main class="page-stats">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/raphm/OneDrive/Documents/valorant/src/Controller/StatsController.php</code></li>
-        <li>Your template at <code>C:/Users/raphm/OneDrive/Documents/valorant/templates/stats/index.html.twig</code></li>
-    </ul>
-</div>
+
+        <div class="like-top-info">
+            <img src="https://trackercdn.com/cdn/tracker.gg/valorant/images/esports/tournament-header.png">
+            <h1>Page des statistiques</h1>
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <img class="stats-background" src="https://imgsvc.trackercdn.com/url/max-width(613),quality(66)/https%3A%2F%2Ftrackercdn.com%2Fcdn%2Ftracker.gg%2Fvalorant%2Fimages%2Finsights.png/image.png">
+
+                <div class="stat-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.875 32" class="trn-card__icon" data-v-7535d68d=""><path d="M14.933 11.467v-7.6H14A13.82 13.82 0 0 0 4.133 8 14.02 14.02 0 1 0 28 18v-.933h-7.6a6.24 6.24 0 0 0-5.467-5.6M18.8 18a4.724 4.724 0 0 1-4.667 4.667A4.84 4.84 0 0 1 9.333 18a4.734 4.734 0 0 1 9.467 0M1.867 18a12.1 12.1 0 0 1 11.2-12.133v5.6A6.62 6.62 0 0 0 7.467 18 6.45 6.45 0 0 0 8.8 21.867l-4 4A11.96 11.96 0 0 1 1.867 18M14 30.133A11.7 11.7 0 0 1 6.133 27.2l4-4A6.45 6.45 0 0 0 14 24.533a6.6 6.6 0 0 0 6.533-5.6h5.6A12.01 12.01 0 0 1 14 30.133m13.867-26a13.9 13.9 0 0 0-10-4.133h-.933v9.333h.933A4.724 4.724 0 0 1 22.533 14v.933h9.333V14a13.17 13.17 0 0 0-3.999-9.867M24.4 13.067a6.51 6.51 0 0 0-5.6-5.6v-5.6a12.044 12.044 0 0 1 11.2 11.2z"></path></svg>                    
+                    <p>Top Weapon</p>
+                </div>
+
+                <p class="stat-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos a minus numquam, repudiandae blanditiis eveniet? Perspiciatis sunt neque veritatis molestiae at, necessitatibus iusto labore sit ea, fugit odio molestias sint?</p>
+            
+                <div class="stat-list">
+                    <div class="stat-list-item">
+                        <img src="https://media.valorant-api.com/weaponskins/89be9866-4807-6235-2a95-499cd23828df/displayicon.png">
+                        <div class="stat-list-element-right">
+                            <h5>Glitch Pop vandal</h5>
+                            <p>Use in 123 lockers</p>
+                        </div>
+                    </div>
+                    <div class="stat-list-item">
+                        <img src="https://media.valorant-api.com/weaponskins/89be9866-4807-6235-2a95-499cd23828df/displayicon.png">
+                        <div class="stat-list-element-right">
+                            <h5>Glitch Pop vandal</h5>
+                            <p>Use in 123 lockers</p>
+                        </div>
+                    </div>
+                    <div class="stat-list-item">
+                        <img src="https://media.valorant-api.com/weaponskins/89be9866-4807-6235-2a95-499cd23828df/displayicon.png">
+                        <div class="stat-list-element-right">
+                            <h5>Glitch Pop vandal</h5>
+                            <p>Use in 123 lockers</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <img class="stats-background" src="https://imgsvc.trackercdn.com/url/max-width(613),quality(66)/https%3A%2F%2Ftrackercdn.com%2Fcdn%2Ftracker.gg%2Fvalorant%2Fimages%2Fesports.png/image.png">
+
+                <div class="stat-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="trn-card__icon" data-v-c739d03a=""><path d="M4 17.333 6.133 20.8l2.134-3.467 4-1.067L9.6 13.2l.267-4.133L6 10.8 2.267 9.2l.4 4.133L0 16.533Zm3.733-5.2L7.6 14l1.2 1.333-1.733.4-.933 1.6-.934-1.467-1.733-.4 1.2-1.333-.267-2 1.733.667Zm12 4.133 4 1.067 2.133 3.6 2.134-3.6 4-.933-2.667-3.067.4-4.133-3.867 1.467-3.733-1.6.267 4.133Zm8.8-.933-1.733.4-.933 1.467-.933-1.6-1.733-.4 1.2-1.333L24.268 12l1.6.667L27.601 12l-.134 1.733Zm-16.266-1.867 3.733-1.6 3.733 1.6-.266-4.133 2.667-3.067-4-.933L16 1.733 13.867 5.2l-4 .933L12.534 9.2Zm4.666-6.533 1.733.4-1.2 1.333.134 1.734-1.6-.667-1.6.667.133-1.867-1.2-1.333 1.733-.4L16 5.333Zm-13.866 16.8v6.533h26v-6.533Zm24 4.667h-6.134v-2.8h6.133Zm-8 0h-6.134v-2.8h6.133Zm-8 0H4.933v-2.8h6.133ZM12 19.733h8V21.6h-8Z"></path></svg>
+                    <p>Top Weapon</p>
+                </div>
+
+                <p class="stat-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos a minus numquam, repudiandae blanditiis eveniet? Perspiciatis sunt neque veritatis molestiae at, necessitatibus iusto labore sit ea, fugit odio molestias sint?</p>
+            
+                <div class="stat-list">
+                    <div class="stat-list-item">
+                        <img src="https://media.valorant-api.com/weaponskins/89be9866-4807-6235-2a95-499cd23828df/displayicon.png">
+                        <div class="stat-list-element-right">
+                            <h5>Glitch Pop vandal</h5>
+                            <p>Use in 123 lockers</p>
+                        </div>
+                    </div>
+                    <div class="stat-list-item">
+                        <img src="https://media.valorant-api.com/weaponskins/89be9866-4807-6235-2a95-499cd23828df/displayicon.png">
+                        <div class="stat-list-element-right">
+                            <h5>Glitch Pop vandal</h5>
+                            <p>Use in 123 lockers</p>
+                        </div>
+                    </div>
+                    <div class="stat-list-item">
+                        <img src="https://media.valorant-api.com/weaponskins/89be9866-4807-6235-2a95-499cd23828df/displayicon.png">
+                        <div class="stat-list-element-right">
+                            <h5>Glitch Pop vandal</h5>
+                            <p>Use in 123 lockers</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <img class="stats-background" src="https://imgsvc.trackercdn.com/url/max-width(613),quality(66)/https%3A%2F%2Ftrackercdn.com%2Fcdn%2Ftracker.gg%2Fvalorant%2Fimages%2Flineups.png/image.png">
+
+                <div class="stat-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="trn-card__icon" data-v-f87af6eb=""><path d="M6.133 19.733A6.117 6.117 0 0 0 0 25.867 6.2 6.2 0 0 0 6.133 32a6.117 6.117 0 0 0 6.133-6.133 6.035 6.035 0 0 0-6.133-6.134m0 9.733A3.727 3.727 0 0 1 2.4 25.733a3.617 3.617 0 0 1 3.733-3.6 3.5 3.5 0 0 1 3.6 3.6 3.7 3.7 0 0 1-3.6 3.734ZM20 2.133A1.137 1.137 0 0 1 20 .4a1.245 1.245 0 0 1 1.733 0l4 4 4-4a1.137 1.137 0 0 1 1.733 0 1.245 1.245 0 0 1 0 1.733l-4 4 4 4a1.137 1.137 0 0 1 0 1.733 1.137 1.137 0 0 1-1.733 0l-4-4-4 4a1.137 1.137 0 0 1-1.733 0 1.137 1.137 0 0 1 0-1.733l4-4Zm12 18.8a6.117 6.117 0 0 1-6.133 6.133H16a1.2 1.2 0 1 1 0-2.4h9.867a3.667 3.667 0 1 0 0-7.333H6.133A6.32 6.32 0 0 1 0 11.067a6.117 6.117 0 0 1 6.133-6.134H18.4a1.2 1.2 0 0 1 0 2.4H6.133a3.667 3.667 0 1 0 0 7.333h19.6A6.346 6.346 0 0 1 32 20.933"></path></svg>                    
+                    <p>Top Weapon</p>
+                </div>
+
+                <p class="stat-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos a minus numquam, repudiandae blanditiis eveniet? Perspiciatis sunt neque veritatis molestiae at, necessitatibus iusto labore sit ea, fugit odio molestias sint?</p>
+            
+                <div class="stat-list">
+                    <div class="stat-list-item">
+                        <img src="https://media.valorant-api.com/weaponskins/89be9866-4807-6235-2a95-499cd23828df/displayicon.png">
+                        <div class="stat-list-element-right">
+                            <h5>Glitch Pop vandal</h5>
+                            <p>Use in 123 lockers</p>
+                        </div>
+                    </div>
+                    <div class="stat-list-item">
+                        <img src="https://media.valorant-api.com/weaponskins/89be9866-4807-6235-2a95-499cd23828df/displayicon.png">
+                        <div class="stat-list-element-right">
+                            <h5>Glitch Pop vandal</h5>
+                            <p>Use in 123 lockers</p>
+                        </div>
+                    </div>
+                    <div class="stat-list-item">
+                        <img src="https://media.valorant-api.com/weaponskins/89be9866-4807-6235-2a95-499cd23828df/displayicon.png">
+                        <div class="stat-list-element-right">
+                            <h5>Glitch Pop vandal</h5>
+                            <p>Use in 123 lockers</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+<!--
+        <img class="image-background" src="https://imgsvc.trackercdn.com/url/height(1000),quality(40)/https%3A%2F%2Ftrackercdn.com%2Fcdn%2Ftracker.gg%2Fvalorant%2Fimages%2Fvalorant-home-hero.jpg/image.jpg"> 
+-->
+
 {% endblock %}

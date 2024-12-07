@@ -1822,3 +1822,99 @@ footer .social a svg{
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
+
+.stats{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 200px;
+}
+
+.stat{
+  border-radius: 10px;
+  border: 1px solid rgb(27, 39, 51);
+  box-sizing: border-box;
+  padding: 20px;
+  background-color: rgb(15, 25, 35);
+  width: 400px;
+  margin-top: 50px;
+  position: relative;
+}
+
+.stats-background{
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.stat-top{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: white;
+  position: relative;
+}
+
+.stat-top svg{
+  fill: #717d8a;
+  height: 30px;
+  width: 30px;
+}
+
+.stat-description{
+  margin-bottom: 30px;
+  color: rgb(149, 166, 185);
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+}
+
+.stat-list{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.stat-list-item{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stat-list-item img{
+  width: 100px;
+  border-radius: 5px;
+  object-fit: cover;
+  border: 1px solid #717d8a;
+  padding: 20px 5px;
+}
+
+.stat-list-element-right{
+  border-bottom: 1px solid rgb(27, 39, 51);
+  padding-bottom: 5px;
+}
+
+.stat-list-element-right h5{
+  font-weight: 500px;
+  font-size: 16px;
+  color: white;
+}
+
+.stat-list-element-right p{
+  color: #4e6f8f;
+}
+
+
+.page-stats{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
